@@ -35,7 +35,7 @@ $this->comments()->to($comments); ?>
 		    		<label for="author" class="col-sm-2 control-label required">昵称</label>
 		    		<div class="col-sm-9">
 		    			<div class="form-control-wrapper">
-		    				<input type="text" name="author" class="form-control text empty" size="35" value="<?php $this->remember('author'); ?>" placeholder="必填*"/>
+		    				<input type="text" id="comment-reply-author" name="author" class="form-control text empty" size="35" value="" placeholder="必填*"/>
 		    				<span class="material-input"></span>
 		    			</div>
 		    		</div>
@@ -44,7 +44,7 @@ $this->comments()->to($comments); ?>
 		    		<label for="mail" class="col-sm-2 control-label required">邮箱</label>
 		    		<div class="col-sm-9">
 		    			<div class="form-control-wrapper">
-		    				<input type="email" name="mail" class="form-control text empty" size="35" value="<?php $this->remember('mail'); ?>" placeholder="必填*"/>
+		    				<input type="email" id="comment-reply-mail" name="mail" class="form-control text empty" size="35" value="" placeholder="必填*"/>
 							<span class="material-input"></span>
 		    			</div>
 		    		</div>
@@ -53,11 +53,28 @@ $this->comments()->to($comments); ?>
 		    		<label for="url" class="col-sm-2 control-label required">网站</label>
 		    		<div class="col-sm-9">
 		    			<div class="form-control-wrapper">
-		    				<input type="url" name="url" class="form-control text empty" size="35" value="<?php $this->remember('url'); ?>" placeholder="http://"/>
+		    				<input type="url" id="comment-reply-url" name="url" class="form-control text empty" size="35" value="" placeholder="http://"/>
 		    				<span class="material-input"></span>
 		    			</div>
 		    		</div>
 		    	</div>
+                <script>
+                        <?php if(!$this->user->hasLogin()){ ?>
+                        function getCookie(name){
+                            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+                            if(arr = document.cookie.match(reg))
+                                return unescape(decodeURI(arr[2]));
+                            else
+                                return null;
+                        }
+                        function adduser(){
+                            document.getElementById('comment-reply-author').value = getCookie('<?php echo md5($this->request->getUrlPrefix()); ?>__typecho_remember_author');
+                            document.getElementById('comment-reply-mail').value = getCookie('<?php echo md5($this->request->getUrlPrefix()); ?>__typecho_remember_mail');
+                            document.getElementById('comment-reply-url').value = getCookie('<?php echo md5($this->request->getUrlPrefix()); ?>__typecho_remember_url');
+                        }
+                        adduser();
+                        <?php } ?>
+                </script>
 		        <?php endif; ?>
 		        <div class="form-group">
 		    		<label for="textarea" class="col-sm-2 control-label required">内容</label>
