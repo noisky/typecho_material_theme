@@ -1,5 +1,6 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php $this->comments()->to($comments); ?>
+<?php 
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+$this->comments()->to($comments); ?>
 <div class="row">
     <div id="comments">
 
@@ -11,28 +12,30 @@
 <?php $comments->listComments(array(
             'replyWord'=>'<button type="button" class="btn btn-danger btn-xs mdi-content-reply reply-button"></button>',
            )); ?>
-<?php $comments->pageNav('&laquo; 前一页', '后一页 &raquo;'); ?>
+<?php $comments->pageNav('&laquo;', '&raquo;', 3, '...', array('wrapTag' => 'ol', 'wrapClass' => 'pagination', 'itemTag' => 'li', 'textTag' => 'span', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
 <div id="<?php $this->respondId(); ?>" class="respond">
 <div class="respond panel panel-default">
 	<div class="panel-body">
-		<div class="cancel-comment-reply"><?php $comments->cancelReply('<button type="button" class="btn btn-primary btn-xs btn-fab mdi-content-clear pull-right"><div class="ripple-wrapper"></div></button>'); ?></div>
+	<div class="cancel-comment-reply"><?php $comments->cancelReply('<button type="button" class="btn btn-primary btn-xs btn-fab mdi-content-clear pull-right"><div class="ripple-wrapper"></div></button>'); ?>
+		</div>
 		<h3 id="response">添加新评论</h3>
 		<!-- 输入表单开始 -->
 		    <form method="post" action="<?php $this->commentUrl() ?>" id="comment_form" class="form-horizontal">
 		        <!-- 如果当前用户已经登录 -->
 		        <?php if($this->user->hasLogin()): ?>
 		            <!-- 显示当前登录用户的用户名以及登出连接 -->
-		            <p>已作为管理员 <a href="<?php $this->options->adminUrl(); ?>"><?php $this->user->screenName(); ?></a> 登录
+		            <p>已作为管理员<a href="<?php $this->options->adminUrl(); ?>"><?php $this->user->screenName(); ?></a>登录
 		            <a href="<?php $this->options->logoutUrl(); ?>" title="Logout">点击注销 &raquo;</a></p>
 
 		        <!-- 若当前用户未登录 -->
 		        <?php else: ?>
 
+
 		    	<div class="form-group">
 		    		<label for="author" class="col-sm-2 control-label required">昵称</label>
 		    		<div class="col-sm-9">
 		    			<div class="form-control-wrapper">
-		    				<input type="text" name="author" class="form-control text empty" size="35" value="<?php $this->remember('author'); ?>" />
+		    				<input type="text" name="author" class="form-control text empty" size="35" value="<?php $this->remember('author'); ?>" placeholder="必填*"/>
 		    				<span class="material-input"></span>
 		    			</div>
 		    		</div>
@@ -41,8 +44,8 @@
 		    		<label for="mail" class="col-sm-2 control-label required">邮箱</label>
 		    		<div class="col-sm-9">
 		    			<div class="form-control-wrapper">
-		    				<input type="email" name="mail" class="form-control text empty" size="35" value="<?php $this->remember('mail'); ?>" />
-		    				<span class="material-input"></span>
+		    				<input type="email" name="mail" class="form-control text empty" size="35" value="<?php $this->remember('mail'); ?>" placeholder="必填*"/>
+							<span class="material-input"></span>
 		    			</div>
 		    		</div>
 		    	</div>
@@ -56,19 +59,19 @@
 		    		</div>
 		    	</div>
 		        <?php endif; ?>
-
 		        <div class="form-group">
 		    		<label for="textarea" class="col-sm-2 control-label required">内容</label>
 		    		<div class="col-sm-9">
 		    			<div class="form-control-wrapper">
-		    				<textarea rows="9" cols="50" name="text" id="textarea" class="form-control textarea  empty" required=""></textarea>
+		    				<textarea rows="9" cols="50" name="text" id="textarea" class="form-control textarea  empty" required="" placeholder="允许使用的 HTML 标签 <a> <img> <blockquote> <pre>"></textarea>
 		    				<span class="material-input"></span>
 		    			</div>
 		    		</div>
 		    	</div>
 		    	<div class="form-group">
+				<?php Smilies_Plugin::output(); ?>
 		    		<div class="col-sm-offset-2 col-sm-5">
-		    			<button type="submit" id="submit" class="btn btn-success btn-raised submit">提交评论</button>
+		    			<button type="submit" id="submit" class="btn btn-success btn-raised submit">提交评论</button>　
 		    		</div>
 		    	</div>
 		    </form>

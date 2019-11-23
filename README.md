@@ -1,16 +1,20 @@
 # typecho-material-theme
-material style theme for the typecho
+这是 Noisky 修改的基于 Material 的 Typecho 模板
 
-## install
+![预览图](./screenshot.png)
 
-```
-cd typecho/usr/theme
-git clone https://github.com/HanSon/typecho_material_theme.git
-```
+仅供本人测试使用
+
+如需使用请手动把所有的cdn资源替换为本地资源...
+
 
 ## feature
 
+_增加个人微主页_
+
 _增加父级分类_
+
+_增加一言显示_
 
 _自定义图片与标语_
 
@@ -22,8 +26,6 @@ _定义是否显示加载时间_
 
 #other
 
-详细教程在此 http://hanc.cc/index.php/archives/126/
-
 如需使用友情链接，请使用以下链接的插件
 
-https://github.com/Hanccc/Links-for-Material-Theme
+https://github.com/noisky/Links-for-Rozv-Theme
