@@ -3,17 +3,19 @@
 
 ![预览图](./screenshot.png)
 
-仅供本人测试使用
+为方便进行更新才整理到github，仅供本人测试使用
 
 效果展示：https://ffis.me
 
-如需使用请手动把所有的cdn资源替换为本地资源...
+如需使用请手动把 **所有** 的cdn资源替换为本地资源...
 
-并且移除comments.php中的表情插件的输出语句`<?php Smilies_Plugin::output(); ?>`
+并且移除 comments.php 中的表情插件的输出语句`<?php Smilies_Plugin::output(); ?>`
 
 表情插件还没整理...
 
 ## feature
+
+_增加友情链接_
 
 _增加个人微主页_
 
@@ -33,4 +35,4 @@ _定义是否显示加载时间_
 
 如需使用友情链接，请使用以下链接的插件
 
-https://github.com/noisky/Links-for-Rozv-Theme
+https://github.com/noisky/Links_for_Material_Theme

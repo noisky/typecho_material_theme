@@ -116,7 +116,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 	        ->parse('<a href="{permalink}" class="item">{date}</a>'); ?>
 	    </div>
 	</div>
- <?php Links_Plugin::output(); ?>
+
 	<div class="panel panel-primary">
 	    <a class="panel-heading" onclick="$('.other_box').slideToggle()" href="javascript:;">
 	        <h3 class="panel-title">其他</h3>
