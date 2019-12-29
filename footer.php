@@ -27,11 +27,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <?php $this->footer(); ?>
 <script src="//static.ffis.me/javascript/jquery-2.2.4.min.js"></script>
 <script src="//static.ffis.me/javascript/highlight.pack.js"></script>
-<script src="//static.ffis.me/javascript/MyCustom.js?v=2019091701"></script>
 <script src="//static.ffis.me/javascript/text-autospace.min.js"></script>
 <script src="//static.ffis.me/javascript/bootstrap.min.js" async defer></script>
 <script src="//static.ffis.me/javascript/material.min.js"></script>
-<script src="//static.ffis.me/javascript/jquery.scrollUp.min.js" async defer></script>
+<script src="//static.ffis.me/javascript/MyCustom.js?v=2019123002"></script>
 </body>
 <!-- 统计代码 -->
 <?php $this->options->statiStics()?>

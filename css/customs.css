@@ -13,11 +13,8 @@ p {
 	margin: 0px;
 }
 
-.nav .mdi-action-home {
-    font-size: 18px;
-    position: relative;
-    margin: -5px -2px;
-    top: 2px;
+.nav .fa-home {
+    font-size: 16px;
 }
 
 body > .container {
@@ -513,8 +510,8 @@ code {
 }
 
 /* 侧边栏图标 */
-.fa {
-    font-size: 18px !important;
+.photo-background .fa {
+    font-size: 18px;
 }
 
 .pf_username {
