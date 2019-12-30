@@ -13,10 +13,6 @@ p {
 	margin: 0px;
 }
 
-.nav .fa-home {
-    font-size: 16px;
-}
-
 body > .container {
     margin-top: 20px;
     margin-bottom: 60px
@@ -33,6 +29,11 @@ footer {
 
 #main {
     padding-top: 80px
+}
+
+.nav .fa-home {
+    font-size: 16px;
+	margin-right: 3px;
 }
 
 .navbar.navbar-inverse {
@@ -222,7 +223,7 @@ img.smilies:hover {
     border-radius: 25px;
     height: 32px;
     width: 32px;
-    font-size: 14px
+    font-size: 12px
 }
 
 .input-group {

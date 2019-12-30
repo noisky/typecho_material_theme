@@ -24,8 +24,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <link rel="Bootmark" href="<?php $this->options->siteIcon() ?>"/>
     <link rel="stylesheet" href="//static.ffis.me/stylesheet/bootstrap_v3.3.7.min.css"/>
     <link rel="stylesheet" href="//static.ffis.me/stylesheet/material.min.css?v=2019123001"/>
-    <link rel="stylesheet" href="//static.ffis.me/stylesheet/customs.css?v=2019123001"/>
-    <link rel="stylesheet" href="//static.ffis.me/homepage/font-awesome.lite.css?v=2019123001">
+    <link rel="stylesheet" href="//static.ffis.me/stylesheet/customs.min.css"/>
+    <link rel="stylesheet" href="//static.ffis.me/stylesheet/font-awesome.lite.min.css"/>
 <!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/material.min.css'); ?><!--">-->
 <!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/customs.css'); ?><!--">-->
 <!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/font-awesome.lite.css'); ?><!--">-->

@@ -14,7 +14,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 				<input type="text" name="s" class="form-control floating-label" placeholder="搜索" size="32" required />
 			</div>
 			<span class="input-group-btn">
-		    	<button class="btn btn-primary btn-fab btn-raised mdi-action-search" value="" id="search-btn" type="submit"></button>
+		    	<button class="btn btn-primary btn-fab btn-raised fa fa-search" value="" id="search-btn" type="submit"></button>
 			</span>
 		</div>
 	</form>
