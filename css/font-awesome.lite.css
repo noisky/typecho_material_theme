@@ -85,3 +85,9 @@
 .fa-search:before {
     content: "\f002";
 }
+.fa-reply:before {
+    content: "\f112";
+}
+.fa-close:before {
+    content: "\f00d";
+}

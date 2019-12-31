@@ -34,7 +34,7 @@ $this->need('header.php'); ?>
                 <?php $this->theNext('<span class="label label-danger">下一篇</span> &nbsp;&nbsp;%s','<span class="label label-default">下一篇</span> &nbsp;&nbsp;没有了');?>
               </div>                  
             </div>
-<!--            --><?php //$this->need('comments.php'); ?>
+            <?php $this->need('comments.php'); ?>
         </div>
       <?php $this->need('sidebar.php'); ?>
     </div>

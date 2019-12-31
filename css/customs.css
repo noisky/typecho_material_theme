@@ -654,7 +654,7 @@ footer .footer-bottom ul.footer-nav li a:hover {
 
 #comments .reply-button {
     border-radius: 25px;
-    padding: 8px;
+    padding: 10px;
     margin: 0 0 10px;
     font-size: 16px
 }
@@ -663,9 +663,9 @@ footer .footer-bottom ul.footer-nav li a:hover {
     border-radius: 25px;
     padding: 10px;
     margin-top: 0;
-    height: 48px;
-    width: 48px;
-    font-size: 24px;
+    height: 45px;
+    width: 45px;
+    font-size: 20px;
 }
 
 .comment-author {
