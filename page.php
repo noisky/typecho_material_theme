@@ -12,7 +12,7 @@ $this->need('header.php'); ?>
                     <div class="post-content"><?php $this->content('- 阅读剩余部分 -'); ?></div>
                 </div>
             </div>
-            <?php $this->need('comments.php'); ?>
+<!--            --><?php //$this->need('comments.php'); ?>
 			
         </div>
       <?php $this->need('sidebar.php'); ?>
