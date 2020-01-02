@@ -13,14 +13,16 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 			<div class="pull-left copyright">Copyright &copy; 2013-<?php _e(date('Y')) ?>&nbsp;<?php $this->options->title(); ?></div>
 			<ul class="footer-nav pull-right">
 				<li>Powered by <a href="http://typecho.org/" rel="nofollow">Typecho))) & <a href="//www.upyun.com" target="_blank" rel="nofollow"><img src="//www.upyun.com/static/90X45.png" width="56" height="28" style="margin: -25px 2px" /></a></a></li>
-				<li>Optimized by <a href="https://noisky.cn/" rel="nofollow">饭饭</a></li>
-				<?php if($this->options->miibeian) : ?>
-				<li><a href="http://beian.miit.gov.cn" rel="nofollow"><?php echo $this->options->miibeian; ?></a></li>
-				<?php endif; ?>
+<!--				<li>Optimized by <a href="https://noisky.cn/" rel="nofollow">饭饭</a></li>-->
+                <li><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41019702002679"><img src="https://static.ffis.me/beian/policebeian.png"/> 豫公网安备 41019702002679号</a></li>
+                <?php if($this->options->miibeian) : ?>
+                    <li><a href="http://beian.miit.gov.cn" rel="nofollow"><?php echo $this->options->miibeian; ?></a></li>
+                <?php endif; ?>
 				<?php if ( !empty($this->options->misc) && in_array('ShowLoadTime', $this->options->misc) ) : ?>
 				<li>加载耗时：<?php echo timer_stop(); ?></li>
 				<?php endif; ?>
 			</ul>
+
 		</div>
 	</div>
 </footer>

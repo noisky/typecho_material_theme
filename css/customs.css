@@ -744,15 +744,10 @@ cite.fn {
         padding: 1px;
     }
 
-    footer .footer-bottom ul.footer-nav {
-        display: none;
-    }
-
     #smiliesbox {
         width: 95%;
         padding: 0 0 0 20px;
     }
-
 
     .post-title {
         font-size: 25px;
@@ -767,10 +762,36 @@ cite.fn {
     padding-right: 0;
     padding-left: 0;
 	overflow-x: hidden;
+    }
 }
 
+@media (max-width: 991px) {
+    footer .footer-bottom ul.footer-nav {
+        /*display: none;*/
+        margin: -90px 0 0 0;
+        color: #555555;
+    }
+
+    footer .footer-bottom ul.footer-nav li {
+        padding: 0 5px;
+        border-left: 1px solid #2c3132;
+    }
+
+    footer .footer-bottom ul.footer-nav li a {
+        color: #555555;
+    }
+}
+@media (max-width: 742px) {
+    footer .footer-bottom ul.footer-nav {
+        margin: -90px 0 0 0;
+    }
 }
 
+@media (max-width: 367px) {
+    footer .footer-bottom ul.footer-nav {
+        margin: -110px 0
+    }
+}
 
 /* space */
 .space space:after {
