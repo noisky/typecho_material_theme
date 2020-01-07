@@ -43,7 +43,7 @@ footer {
 }
 
 .billboard {
-    background: #b8d9fa /*url(../img/billboard-xiweier.jpg)*/ center center repeat-x;
+    background: #b8d9fa url(https://api.ffis.me/imgApi/today/blog-pc) center center repeat-x;
     background-size: cover;
     padding: 180px 0px 120px 0px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .25), 0 2px 8px rgba(0, 0, 0, .12)
@@ -729,7 +729,7 @@ cite.fn {
     }
 
     .billboard {
-        background: #b8d9fa /*url(../img/billboard-1-xiweier.jpg)*/ center center repeat-x;
+        background: #b8d9fa url(https://api.ffis.me/imgApi/today/blog-mobile) center center repeat-x;
         background-size: cover;
         padding: 200px 0 100px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, .25), 0 2px 8px rgba(0, 0, 0, .12)
