@@ -976,7 +976,7 @@ a.no-underline:hover:after {
     .link-box a {
         margin: 0 0.9375rem 3.75rem;
         width: -webkit-calc(100% / 3 - 1.875rem);
-        width: calc(100% / 3 - 1.875rem)
+        width: calc(100% / 4 - 1.875rem)
     }
 }
 
@@ -984,7 +984,7 @@ a.no-underline:hover:after {
     .link-box a {
         margin: 0 0.9375rem 3.75rem;
         width: -webkit-calc(100% / 4 - 1.875rem);
-        width: calc(100% / 4 - 1.875rem)
+        width: calc(100% / 5 - 1.875rem)
     }
 }
 
@@ -992,6 +992,6 @@ a.no-underline:hover:after {
     .link-box a {
         margin: 0 0.9375rem 3.75rem;
         width: -webkit-calc(100% / 5 - 1.875rem);
-        width: calc(100% / 5 - 1.875rem)
+        width: calc(100% / 6 - 1.875rem)
     }
 }
