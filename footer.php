@@ -32,7 +32,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <script src="//static.ffis.me/javascript/text-autospace.min.js"></script>
 <script src="//static.ffis.me/javascript/bootstrap.min.js" async defer></script>
 <script src="//static.ffis.me/javascript/material.min.js"></script>
-<script src="//static.ffis.me/javascript/MyCustom.min.js?v=20200107"></script>
+<script src="//static.ffis.me/javascript/MyCustom.min.js?v=20200210"></script>
 <!--<script src="--><?php //$this->options->themeUrl('js/MyCustom.min.js'); ?><!--"></script>-->
 </body>
 <!-- 统计代码 -->
