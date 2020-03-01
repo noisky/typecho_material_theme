@@ -9,7 +9,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <!DOCTYPE HTML>
 <html lang="zh-CN" class="space">
 <head profile="http://gmpg.org/xfn/11">
-    <meta charset="<?php $this->options->charset(); ?>">
+    <meta http-equiv="content-type" content="text/html; charset=<?php $this->options->charset(); ?>" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
