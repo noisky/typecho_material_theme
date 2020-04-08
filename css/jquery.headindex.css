@@ -1,0 +1,64 @@
+.c-a {
+    width: 200px;
+    min-width: 200px;
+    height: max-content;
+    max-height: 400px;
+    position: fixed;
+    left: 160px;
+    top: 100px;
+    border-radius: 2px;
+    border: 0;
+    box-shadow: 0 1px 6px 0 rgba(0,0,0,.12), 0 1px 6px 0 rgba(0,0,0,.12);
+    background-color: #fff;
+}
+
+.index-box {
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.index-box ul {
+    padding: 0;
+    list-style: none;
+}
+
+.index-box .index-subItem-box {
+    display: none;
+}
+
+.index-box .index-item,
+.index-box .index-link {
+    width: 100%;
+    display: block;
+    color: #333333;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.index-box .index-link {
+    padding: 4px 8px 4px 12px;
+    cursor: pointer;
+    -webkit-transition: background-color 0.3s, border-left-color 0.3s;
+    -moz-transition: background-color 0.3s, border-left-color 0.3s;
+    -o-transition: background-color 0.3s, border-left-color 0.3s;
+    transition: background-color 0.3s, border-left-color 0.3s;
+    border-left: 3px solid transparent;
+    word-break: break-all;
+}
+
+.index-box .index-item.current > .index-link {
+    background-color: rgba(238, 238, 238, 1);
+    border-left: 3px solid #009688;
+}
+
+.index-box .index-link:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.index-box .index-subItem-box .index-item {
+    padding-left: 1em;
+}
+

@@ -3,6 +3,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $this->need('header.php'); ?>
 
 <div class="container" id="main">
+    <div class="c-a" id="page-tree">
+        <div class="index-box">
+        </div>
+        <div id="t"></div>
+    </div>
     <div class="row">
 
         <div class="col-md-9">
@@ -25,7 +30,6 @@ $this->need('header.php'); ?>
             </div>
 
 
-
 	        <div class="panel panel-default prenext">
               <div class="panel-body">
                 <?php $this->thePrev('<span class="label label-danger">上一篇</span> &nbsp;&nbsp;%s','<span class="label label-default">上一篇</span> &nbsp;&nbsp;没有了');?>
@@ -39,5 +43,31 @@ $this->need('header.php'); ?>
       <?php $this->need('sidebar.php'); ?>
     </div>
 </div>
-
+<script>
+    //定义事件侦听器函数
+    function displayWindowSize(){
+        //获取文章离屏幕左边的距离
+        let offsetLeft = document.getElementsByClassName("row")[0].offsetLeft;
+        // 获取窗口的宽度和高度，不包括滚动条
+        var width = document.body.clientWidth;
+        console.log(width);
+    // var h = document.documentElement.clientHeight;
+        //判断不同屏幕宽度情况下的展示效果
+        if (width < 1903) {
+            if (width < 1600) {
+                document.getElementById("page-tree").style.display = "none";
+            } else {
+                document.getElementById("page-tree").style.display = "block";
+                document.getElementById("page-tree").style.left = (offsetLeft - 207) + "px";
+            }
+        } else {
+            document.getElementById("page-tree").style.display = "block";
+            document.getElementById("page-tree").style.left = "160px";
+        }
+    }
+    // 将事件侦听器函数附加到窗口的resize事件
+    window.addEventListener("resize", displayWindowSize);
+    // 第一次调用该函数
+    displayWindowSize();
+</script>
 <?php $this->need('footer.php'); ?>

@@ -28,12 +28,21 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 </footer>
 <?php $this->footer(); ?>
 <script src="//static.ffis.me/javascript/jquery-2.2.4.min.js"></script>
-<script src="//static.ffis.me/javascript/highlight.pack.js"></script>
-<script src="//static.ffis.me/javascript/text-autospace.min.js"></script>
 <script src="//static.ffis.me/javascript/bootstrap.min.js" async defer></script>
-<script src="//static.ffis.me/javascript/material.min.js"></script>
-<script src="//static.ffis.me/javascript/MyCustom.min.js?v=20200210"></script>
-<!--<script src="--><?php //$this->options->themeUrl('js/MyCustom.min.js'); ?><!--"></script>-->
+<script src="//static.ffis.me/javascript/merge.min.js"></script>
+<script src="//static.ffis.me/javascript/MyCustom.min.js?v=20200408"></script>
+<!--<script src="--><?php //$this->options->themeUrl('js/MyCustom.min.js?v=20200408'); ?><!--"></script>-->
+<script>
+    $(function () {
+        $(document).headIndex({
+            articleWrapSelector: '.panel-body',//包裹文章的元素的选择器
+            indexBoxSelector: '.index-box',//用来放目录索引的元素的选择器
+            scrollSelector: 'body,html',
+            scrollWrap: window,
+            offset: 0,
+        });
+    })
+</script>
 </body>
 <!-- 统计代码 -->
 <?php $this->options->statiStics()?>

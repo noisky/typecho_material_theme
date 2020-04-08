@@ -24,11 +24,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <link rel="Bootmark" href="<?php $this->options->siteIcon() ?>"/>
     <link rel="stylesheet" href="//static.ffis.me/stylesheet/bootstrap_v3.3.7.min.css"/>
     <link rel="stylesheet" href="//static.ffis.me/stylesheet/material.min.css?v=2019123001"/>
-    <link rel="stylesheet" href="//static.ffis.me/stylesheet/customs.min.css?v=20200206"/>
-    <link rel="stylesheet" href="//static.ffis.me/stylesheet/font-awesome.lite.min.css"/>
 <!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/material.min.css'); ?><!--">-->
-<!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/customs.min.css'); ?><!--">-->
-<!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/font-awesome.lite.css'); ?><!--">-->
+     <link rel="stylesheet" href="//static.ffis.me/stylesheet/customs.min.css?v=20200408"/>
+<!--   <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/customs.css'); ?><!--">-->
     <!--[if lt IE 9]>
     <script src="//static.ffis.me/javascript/html5shiv.js"></script>
     <script src="//static.ffis.me/javascript/respond.js"></script>

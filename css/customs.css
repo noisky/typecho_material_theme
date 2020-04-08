@@ -368,14 +368,96 @@ pre {
     background: #eee8d5
 }
 
-/*!
- *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
- *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+/*
+ * Font Awesome Lite 4.7.0.
  */
 @font-face {
-    font-family: FontAwesome;
-    font-weight: 400;
+    font-family: 'FontAwesome';
+    src: url('//static.ffis.me/homepage/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2');
+    font-weight: normal;
     font-style: normal
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+.fa-weibo:before {
+    content: "\f18a"
+}
+.fa-qq:before {
+    content: "\f1d6"
+}
+.fa-telegram:before {
+    content: "\f2c6"
+}
+.fa-wechat:before,
+.fa-weixin:before {
+    content: "\f1d7"
+}
+.fa-github-square:before {
+    content: "\f092"
+}
+.fa-github:before {
+    content: "\f09b"
+}
+.fa-github-alt:before {
+    content: "\f113"
+}
+.fa-feed:before,
+.fa-rss:before {
+    content: "\f09e"
+}
+.fa-rss-square:before {
+    content: "\f143"
+}
+.fa-list-alt:before {
+    content: "\f022"
+}
+.fa-list:before {
+    content: "\f03a"
+}
+.fa-list-ul:before {
+    content: "\f0ca"
+}
+.fa-list-ol:before {
+    content: "\f0cb"
+}
+.fa-angle-up:before {
+    content: "\f106"
+}
+.fa-envelope-o:before {
+    content: "\f003"
+}
+.fa-envelope:before {
+    content: "\f0e0"
+}
+.fa-envelope-square:before {
+    content: "\f199"
+}
+.fa-envelope-open:before {
+    content: "\f2b6"
+}
+.fa-envelope-open-o:before {
+    content: "\f2b7"
+}
+.fa-home:before {
+    content: "\f015"
+}
+.fa-angle-up:before {
+    content: "\f106";
+}
+.fa-search:before {
+    content: "\f002";
+}
+.fa-reply:before {
+    content: "\f112";
+}
+.fa-close:before {
+    content: "\f00d";
 }
 
 code, kbd, pre, samp {
@@ -446,7 +528,7 @@ code {
     padding: 0;
 }
 
-/* 微博logo */
+/* weibo logo */
 .photo-background {
     height: auto;
 }
@@ -486,7 +568,7 @@ code {
     top: 50px;
 }
 
-/* 国旗 */
+/* flag */
 .photo-wrapper img {
     margin: 15px 0px 0px 40px;
     max-height: 110px;
@@ -510,7 +592,7 @@ code {
 	box-shadow: none;
 }
 
-/* 侧边栏图标 */
+/* sidebar icon */
 .photo-background .fa {
     font-size: 18px;
 }
@@ -713,6 +795,73 @@ cite.fn {
 
 #logo {
     display: none
+}
+
+/*
+ * page index.
+ */
+.c-a {
+    width: 200px;
+    min-width: 200px;
+    height: max-content;
+    max-height: 400px;
+    position: fixed;
+    left: 160px;
+    top: 100px;
+    border-radius: 2px;
+    border: 0;
+    box-shadow: 0 1px 6px 0 rgba(0,0,0,.12), 0 1px 6px 0 rgba(0,0,0,.12);
+    background-color: #fff;
+}
+
+.index-box {
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.index-box ul {
+    padding: 0;
+    list-style: none;
+}
+
+.index-box .index-subItem-box {
+    display: none;
+}
+
+.index-box .index-item,
+.index-box .index-link {
+    width: 100%;
+    display: block;
+    color: #333333;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.index-box .index-link {
+    padding: 4px 8px 4px 12px;
+    cursor: pointer;
+    -webkit-transition: background-color 0.3s, border-left-color 0.3s;
+    -moz-transition: background-color 0.3s, border-left-color 0.3s;
+    -o-transition: background-color 0.3s, border-left-color 0.3s;
+    transition: background-color 0.3s, border-left-color 0.3s;
+    border-left: 3px solid transparent;
+    word-break: break-all;
+}
+
+.index-box .index-item.current > .index-link {
+    background-color: rgba(238, 238, 238, 1);
+    border-left: 3px solid #009688;
+}
+
+.index-box .index-link:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.index-box .index-subItem-box .index-item {
+    padding-left: 1em;
 }
 
 @media (max-width: 767px) {
