@@ -50,7 +50,7 @@ $this->need('header.php'); ?>
         let offsetLeft = document.getElementsByClassName("row")[0].offsetLeft;
         // 获取窗口的宽度和高度，不包括滚动条
         var width = document.body.clientWidth;
-        console.log(width);
+        // console.log(width);
     // var h = document.documentElement.clientHeight;
         //判断不同屏幕宽度情况下的展示效果
         if (width < 1903) {
