@@ -45,30 +45,23 @@ $this->need('header.php'); ?>
     </div>
 </div>
 <script>
-    //定义事件侦听器函数
+    //动态控制文章目录树的显示位置
     function displayWindowSize(){
         //获取文章离屏幕左边的距离
         let offsetLeft = document.getElementsByClassName("row")[0].offsetLeft;
-        // 获取窗口的宽度和高度，不包括滚动条
+        //获取窗口的宽度和高度，不包括滚动条
         var width = document.body.clientWidth;
-        // console.log(width);
-    // var h = document.documentElement.clientHeight;
-        //判断不同屏幕宽度情况下的展示效果
-        if (width < 1903) {
-            if (width < 1600) {
-                document.getElementById("page-tree").style.display = "none";
-            } else {
-                document.getElementById("page-tree").style.display = "block";
-                document.getElementById("page-tree").style.left = (offsetLeft - 207) + "px";
-            }
+        //当屏幕宽带小于1600时隐藏文章目录树
+        if (width < 1600) {
+            document.getElementById("page-tree").style.display = "none";
         } else {
             document.getElementById("page-tree").style.display = "block";
-            document.getElementById("page-tree").style.left = "160px";
+            document.getElementById("page-tree").style.left = (offsetLeft - 207) + "px";
         }
     }
-    // 将事件侦听器函数附加到窗口的resize事件
+    //将事件侦听器函数附加到窗口的resize事件
     window.addEventListener("resize", displayWindowSize);
-    // 第一次调用该函数
+    //第一次调用该函数
     displayWindowSize();
 </script>
 <?php $this->need('footer.php'); ?>
