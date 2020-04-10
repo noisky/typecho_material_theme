@@ -138,9 +138,6 @@
             buildHtml: function (tree) {
                 if (tree === undefined || tree.length === 0) return;
 
-                this.tempHtml.push("<li class=\"index-item-heading\">\n" +
-                    "\t        <span class=\"index-link-heading\">目录</span>\n" +
-                    "\t    </li>");
                 for (var i = 0; i < tree.length; i++) {
                     this.tempHtml.push("<li class='" + this.settings.itemClass + "'>"
                         + "<a class='" + this.settings.linkClass + "' href='#" + tree[i].item.id + "'>"

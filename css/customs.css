@@ -804,7 +804,6 @@ cite.fn {
     width: 200px;
     min-width: 200px;
     height: max-content;
-    max-height: 400px;
     position: fixed;
     left: 160px;
     top: 205px;
@@ -814,20 +813,22 @@ cite.fn {
     background-color: #fff;
 }
 
-.index-item-heading .index-link-heading {
+/* 文章目录树 */
+.index-box-title {
     width: 100%;
     display: block;
     box-sizing: border-box;
     text-align: center;
-}
-
-.index-link-heading {
-    background-color: #03a9f4;
+    background-color: #009688;
     color: rgba(255,255,255,.84);
     padding: 4px 8px 4px 12px;
     cursor: pointer;
-    border-right: 3px solid transparent;
     word-break: break-all;
+}
+
+.index-box-title:hover, .index-box-title:focus{
+    color: rgba(255,255,255,.84);
+    text-decoration: none;
 }
 
 .index-box {
@@ -859,17 +860,17 @@ cite.fn {
 .index-box .index-link {
     padding: 4px 8px 4px 12px;
     cursor: pointer;
-    -webkit-transition: background-color 0.3s, border-right-color 0.3s;
-    -moz-transition: background-color 0.3s, border-right-color 0.3s;
-    -o-transition: background-color 0.3s, border-right-color 0.3s;
-    transition: background-color 0.3s, border-right-color 0.3s;
-    border-right: 3px solid transparent;
+    -webkit-transition: background-color 0.3s, border-left-color 0.3s;
+    -moz-transition: background-color 0.3s, border-left-color 0.3s;
+    -o-transition: background-color 0.3s, border-left-color 0.3s;
+    transition: background-color 0.3s, border-left-color 0.3s;
+    border-left: 3px solid transparent;
     word-break: break-all;
 }
 
 .index-box .index-item.current > .index-link {
     background-color: rgba(238, 238, 238, 1);
-    border-right: 3px solid #28a745;
+    border-left: 3px solid #ff6651;
 }
 
 .index-box .index-link:hover {

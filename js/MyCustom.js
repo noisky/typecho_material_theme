@@ -144,7 +144,6 @@ jQuery(document).ready(function($) {
     });
 });
 /* 文章页面目录索引配置 */
-// TODO 完成目录标题
 $(function () {
     $(document).headIndex({
         articleWrapSelector: '.post-content',//包裹文章的元素的选择器
