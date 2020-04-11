@@ -153,3 +153,10 @@ $(function () {
         offset: 0,
     });
 });
+/* 保持文章目录树标题和目录同步显示和隐藏 */
+$(function () {
+    let indexBoxTitle = $(".index-item").length;
+    if (0 === indexBoxTitle) {
+        $("#index-box-title").css("display", "none");
+    }
+});

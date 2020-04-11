@@ -4,7 +4,7 @@ $this->need('header.php'); ?>
 
 <div class="container" id="main">
     <div class="c-a" id="page-tree">
-        <a class="index-box-title" onclick="$('.index-box').slideToggle()" href="javascript:;">目录</a>
+        <a class="index-box-title" id="index-box-title" onclick="$('.index-box').slideToggle()" href="javascript:;">目录</a>
             <div class="index-box">
             </div>
             <div id="t"></div>
