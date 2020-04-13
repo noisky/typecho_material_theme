@@ -22,7 +22,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php $this->options->siteIcon() ?>"/>
     <link rel="Shortcut Icon" href="<?php $this->options->siteIcon() ?>"/>
     <link rel="Bootmark" href="<?php $this->options->siteIcon() ?>"/>
-    <link rel="stylesheet" href="//static.ffis.me/stylesheet/bootstrap_v3.3.7.min.css"/>
+    <link rel="stylesheet" href="//static.ffis.me/stylesheet/bootstrap.min.css?v20200413"/>
     <link rel="stylesheet" href="//static.ffis.me/stylesheet/material.min.css?v=2019123001"/>
 <!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/material.min.css'); ?><!--">-->
     <link rel="stylesheet" href="//static.ffis.me/stylesheet/customs.min.css?v=2020041601"/>
