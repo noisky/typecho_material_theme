@@ -1,20 +1,20 @@
 // 一言异步加载代码
-(function getHitokoto() {
-    $.ajax({
-        //url: "https://api.imjad.cn/hitokoto/?encode=jsc&charset=utf-8&length=50",
-        url: "https://v1.hitokoto.cn/?encode=json&charset=utf-8",
-        dataType: "jsonp",
-        async: true,
-        jsonp: "callback",
-        jsonpCallback: "hitokoto",
-        success: function (result) {
-            $('#hitokoto').html(result.hitokoto)
-        },
-        error: function () {
-            $('#hitokoto').html("读取数据失败了的说……_(:з」∠)_")
-        }
-    });
-})();
+// (function getHitokoto() {
+//     $.ajax({
+//         // url: "https://api.imjad.cn/hitokoto/?encode=jsc&charset=utf-8&length=50",
+//         url: "https://v1.hitokoto.cn/?encode=json&charset=utf-8",
+//         dataType: "jsonp",
+//         async: true,
+//         jsonp: "callback",
+//         jsonpCallback: "hitokoto",
+//         success: function (result) {
+//             $('#hitokoto').text(result.hitokoto)
+//         },
+//         error: function () {
+//             $('#hitokoto').text("读取数据失败了的说……_(:з」∠)_")
+//         }
+//     });
+// })();
 /* 首屏图片根据星期获取 */
 // 电脑版图片地址
 // var imgUrl = [

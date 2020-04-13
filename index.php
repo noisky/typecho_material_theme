@@ -24,7 +24,7 @@ $this->need('header.php');
 						<?php else: ?>
 						<?php if ( !empty($this->options->misc) && in_array('Showyiyan', $this->options->misc) ) : ?>
 						<?php else: ?>
-						<div id="hitokoto">『少女祈祷中…』</div>
+						<div id="hitokoto">『Loading…』</div>
 						<?php endif; ?>
 						<?php endif; ?>
 						</span>
