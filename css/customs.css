@@ -1,5 +1,5 @@
 .h1, .h2, .h3, .h4, .lead, body, h1, h2, h3, h4 ,h5 ,h6 {
-    font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    font-family: tahoma, arial, "Microsoft YaHei" ,"Hiragino Sans GB", "\5b8b\4f53", sans-serif;
     font-weight: 400;
 }
 
@@ -279,7 +279,6 @@ img.smilies:hover {
     user-select: none;
     -webkit-transition: opacity .1s ease, background-color .1s ease, color .1s ease, box-shadow .1s ease, background .1s ease;
     transition: opacity .1s ease, background-color .1s ease, color .1s ease, box-shadow .1s ease, background .1s ease;
-    will-change: '';
     -webkit-tap-highlight-color: transparent
 }
 
