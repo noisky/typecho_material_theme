@@ -11,7 +11,6 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $this->need('header.php');
 ?>
-
 <section class="billboard">
 	<div class="container">
 		<div class="row">
@@ -57,6 +56,6 @@ $this->need('header.php');
 	    <?php $this->need("sidebar.php"); ?>
    </div>
 </div>
-
+<script src="//v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
 <?php $this->need('footer.php'); ?>
 

@@ -33,7 +33,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <!--<script src="--><?php //$this->options->themeUrl('js/merge.min.js'); ?><!--"></script>-->
 <script src="//static.ffis.me/javascript/MyCustom.min.js?v=20200411"></script>
 <!--<script src="--><?php //$this->options->themeUrl('js/MyCustom.js?v=20200409'); ?><!--"></script>-->
-<script src="//v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
 </body>
 <!-- 统计代码 -->
 <?php $this->options->statiStics()?>
