@@ -1140,23 +1140,23 @@ a.no-underline:hover:after {
 @media screen and (max-width: 767px) and (min-width: 501px) {
     .link-box a {
         margin: 0 0.9375rem 3.75rem;
-        width: -webkit-calc(100% / 3 - 1.875rem);
-        width: calc(100% / 4 - 1.875rem)
+        width: -webkit-calc(100% / 3 - 1.9rem);
+        width: calc(100% / 4 - 1.9rem)
     }
 }
 
 @media screen and (max-width: 1599px) and (min-width: 768px) {
     .link-box a {
         margin: 0 0.9375rem 3.75rem;
-        width: -webkit-calc(100% / 4 - 1.875rem);
-        width: calc(100% / 5 - 1.875rem)
+        width: -webkit-calc(100% / 4 - 1.9rem);
+        width: calc(100% / 5 - 1.9rem)
     }
 }
 
 @media screen and (min-width: 1600px) {
     .link-box a {
         margin: 0 0.9375rem 3.75rem;
-        width: -webkit-calc(100% / 5 - 1.875rem);
-        width: calc(100% / 6 - 1.875rem)
+        width: -webkit-calc(100% / 5 - 1.9rem);
+        width: calc(100% / 6 - 1.9rem)
     }
 }
