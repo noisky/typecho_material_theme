@@ -134,7 +134,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 		 <?php endif; ?>
 	       <a href="<?php $this->options->feedUrl(); ?>" class="item"><?php _e('文章 RSS'); ?></a>
 	       <a href="<?php $this->options->commentsFeedUrl(); ?>" class="item"><?php _e('评论 RSS'); ?></a>
-           <a href="https://ffis.me/donate/" class="item" target="_blank"><?php _e('赞助 Sponsor'); ?></a>
+           <a href="https://ffis.me/sponsor/" class="item" target="_blank"><?php _e('赞助 Sponsor'); ?></a>
 	    </div>
 	</div>
 
