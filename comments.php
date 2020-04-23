@@ -32,8 +32,8 @@ $this->comments()->to($comments); ?>
 
 
 		    	<div class="form-group">
-		    		<label for="author" class="col-sm-2 control-label required">昵称</label>
-		    		<div class="col-sm-9">
+		    		<label for="author" class="col-sm-1 control-label required">昵称</label>
+		    		<div class="col-sm-11">
 		    			<div class="form-control-wrapper">
 		    				<input type="text" id="comment-reply-author" name="author" class="form-control text empty" size="35" value="" placeholder="必填*"/>
 		    				<span class="material-input"></span>
@@ -41,8 +41,8 @@ $this->comments()->to($comments); ?>
 		    		</div>
 		    	</div>
 				<div class="form-group">
-		    		<label for="mail" class="col-sm-2 control-label required">邮箱</label>
-		    		<div class="col-sm-9">
+		    		<label for="mail" class="col-sm-1 control-label required">邮箱</label>
+		    		<div class="col-sm-11">
 		    			<div class="form-control-wrapper">
 		    				<input type="email" id="comment-reply-mail" name="mail" class="form-control text empty" size="35" value="" placeholder="必填*"/>
 							<span class="material-input"></span>
@@ -50,8 +50,8 @@ $this->comments()->to($comments); ?>
 		    		</div>
 		    	</div>
 		    	<div class="form-group">
-		    		<label for="url" class="col-sm-2 control-label required">网站</label>
-		    		<div class="col-sm-9">
+		    		<label for="url" class="col-sm-1 control-label required">网站</label>
+		    		<div class="col-sm-11">
 		    			<div class="form-control-wrapper">
 		    				<input type="url" id="comment-reply-url" name="url" class="form-control text empty" size="35" value="" placeholder="http://"/>
 		    				<span class="material-input"></span>
@@ -77,8 +77,8 @@ $this->comments()->to($comments); ?>
                 </script>
 		        <?php endif; ?>
 		        <div class="form-group">
-		    		<label for="textarea" class="col-sm-2 control-label required">内容</label>
-		    		<div class="col-sm-9">
+		    		<label for="textarea" class="col-sm-1 control-label required">内容</label>
+		    		<div class="col-sm-11">
 		    			<div class="form-control-wrapper">
 		    				<textarea rows="9" cols="50" name="text" id="textarea" class="form-control textarea  empty" required="" placeholder="允许使用的 HTML 标签 <a> <img> <blockquote> <pre>"></textarea>
 		    				<span class="material-input"></span>
@@ -87,7 +87,7 @@ $this->comments()->to($comments); ?>
 		    	</div>
 		    	<div class="form-group">
 				<?php Smilies_Plugin::output(); ?>
-		    		<div class="col-sm-offset-2 col-sm-5">
+		    		<div class="col-sm-offset-1 col-sm-5">
 		    			<button type="submit" id="submit" class="btn btn-success btn-raised submit">提交评论</button>　
 		    		</div>
 		    	</div>

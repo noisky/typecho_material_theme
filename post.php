@@ -16,10 +16,10 @@ $this->need('header.php'); ?>
                 <div class="panel-body">
                     <h3 class="post-title"><a href="<?php $this->permalink() ?>" target="_blank"><?php $this->title() ?></a></h3>
                     <div class="post-meta">
-                        <span>作者：<a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a></span>
-                        <span>时间：<?php $this->date('Y-m-d'); ?></span>
-                        <span>分类：<?php $this->category(','); ?></span>
-                        <span>评论：<a href="<?php $this->permalink() ?>"><?php $this->commentsNum('%d 评论'); ?></a> </span>
+                        <span>#&nbsp;作者：<a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a></span>
+                        <span>/&nbsp;&nbsp;分类：<?php $this->category(','); ?></span>
+                        <span>/&nbsp;&nbsp;评论：<a href="<?php $this->permalink() ?>"><?php $this->commentsNum('%d 评论'); ?></a> </span>
+                        <span>/&nbsp;&nbsp;时间：<?php $this->date('Y-m-d H:i'); ?></span>
                     </div>
                     <div class="post-content"><?php $this->content('- 阅读剩余部分 -'); ?></div>
 					<br>
@@ -52,7 +52,7 @@ $this->need('header.php'); ?>
         //获取窗口的宽度和高度，不包括滚动条
         var width = document.body.clientWidth;
         //当屏幕宽带小于1600时隐藏文章目录树
-        if (width < 1600) {
+        if (width < 1630) {
             document.getElementById("page-tree").style.display = "none";
         } else {
             document.getElementById("page-tree").style.display = "block";

@@ -58,16 +58,21 @@ footer {
     position: static;
 }
 
+.col-md-9, .col-md-3 {
+    padding-right: 10px;
+    padding-left: 10px
+}
+
 .post-meta {
     color: #999;
-    font-size: 11px;
+    font-size: 0.9em;
     margin: 10px 5px
 }
 
 .post-meta span {
-    margin: 0 8px 0 0;
-    padding-left: 12px;
-    border-left: 1px solid #999;
+    margin-right: 5px;
+    /*padding-left: 12px;*/
+    /*border-left: 1px solid #999;*/
 }
 
 .post-meta span:first-child {
@@ -159,17 +164,17 @@ table tr td {
 
 #smiliesbox {
     display: block;
-    width: 90%;
+    width: 98%;
     height: 110px;
     overflow-y: auto;
     margin-bottom: 10px;
     margin-top: -5px;
-    padding: 0px 0 0 150px;
+    padding: 0 0 0 93px;
 }
 
 .face {
     background: #fff;
-    padding: 6px;
+    padding: 5px;
     display: inline-block;
     cursor: pointer;
 }
@@ -779,6 +784,14 @@ cite.fn {
     margin: 0px 0px 10px 0
 }
 
+h3#response {
+    padding-left: 20px;
+}
+
+#comment_form {
+    padding: 5px 30px 10px 20px;
+}
+
 .hitokoto {
     font-size: 15px;
     font-weight: 300;
@@ -911,7 +924,8 @@ cite.fn {
 
     #smiliesbox {
         width: 95%;
-        padding: 0 0 0 20px;
+        padding: 0 0 0 0px;
+        margin-left: 5px;
     }
 
     .post-title {
@@ -924,9 +938,14 @@ cite.fn {
 		margin-left: -25px;
 	}
 	.col-md-9 {
-    padding-right: 0;
-    padding-left: 0;
-	overflow-x: hidden;
+        overflow-x: hidden;
+    }
+    .col-md-9, .col-md-3 {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    #comments .panel-body {
+        padding: 0;
     }
 }
 
@@ -945,6 +964,7 @@ cite.fn {
     footer .footer-bottom ul.footer-nav li a {
         color: #555555;
     }
+
 }
 @media (max-width: 742px) {
     footer .footer-bottom ul.footer-nav {
@@ -1083,6 +1103,20 @@ a.no-underline {
 
 a.no-underline:hover:after {
     width: 0 !important
+}
+@media (min-width: 1200px) {
+    .container{
+        width: 1200px;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-md-9 {
+        width: 76%;
+    }
+    .col-md-3 {
+        width: 24%;
+    }
 }
 
 @media screen and (max-width: 318px) {
