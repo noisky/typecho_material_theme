@@ -20,8 +20,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             'author' => _t('%s 发布的文章')
         ), '', ' - '); ?><?php $this->options->title(); ?></title>
 <?php if($this->is('index')): ?>
+    <link rel="dns-prefetch" href="//api.ffis.me" />
     <link rel="dns-prefetch" href="//static.ffis.me" />
     <link rel="dns-prefetch" href="//static.noisky.cn" />
+    <link rel="dns-prefetch" href="//v1.hitokoto.cn" />
+    <link rel="dns-prefetch" href="//hm.baidu.com" />
     <link rel="dns-prefetch" href="//www.google-analytics.com" />
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 <?php endif;?>
