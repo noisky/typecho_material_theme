@@ -19,6 +19,12 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             'tag' => _t('标签 %s 下的文章'),
             'author' => _t('%s 发布的文章')
         ), '', ' - '); ?><?php $this->options->title(); ?></title>
+<?php if($this->is('index')): ?>
+    <link rel="dns-prefetch" href="//static.ffis.me" />
+    <link rel="dns-prefetch" href="//static.noisky.cn" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+<?php endif;?>
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php $this->options->siteIcon() ?>"/>
     <link rel="Shortcut Icon" href="<?php $this->options->siteIcon() ?>"/>
     <link rel="Bootmark" href="<?php $this->options->siteIcon() ?>"/>
