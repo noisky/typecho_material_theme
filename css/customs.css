@@ -95,6 +95,23 @@ ul.nav.navbar-nav {
     padding: 0 30px
 }
 
+.post-update {
+    color: #999;
+    font-size: 0.9em;
+    margin: 10px 5px
+}
+.arctags {
+    padding: 15px 8px 0;
+}
+
+.arctags-left {
+    float: left
+}
+
+.arctags-rignt {
+    float: right
+}
+
 .post-title a {
     text-decoration: none
 }

@@ -23,7 +23,12 @@ $this->need('header.php'); ?>
                     </div>
                     <div class="post-content"><?php $this->content('- 阅读剩余部分 -'); ?></div>
 					<br>
-					<p class="arctags text-right"><span aria-hidden="true" class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;<?php $this->tags(' , ', true, '无标签'); ?></p>
+                    <div class="arctags arctags-left">
+                        <span aria-hidden="true" class="glyphicon glyphicon-tags arctags-left"></span>&nbsp;&nbsp;&nbsp;<?php $this->tags(' , ', true, '无标签'); ?>
+                    </div>
+                    <div class="arctags arctags-rignt">
+                        <span class="post-update" ># 最后更新：<?php echo date('Y-m-d H:i', $this->modified); ?>
+                    </div>
                 </div>
 				<div class="post-copyright">
 				本文由 <b><a href="https://ffis.me/author/1/">Noisky</a></b> 创作，采用 <b><a target="_blank" href="https://creativecommons.org/licenses/by/4.0/" rel="external nofollow">知识共享署名 4.0</a></b> 国际许可协议进行许可。
