@@ -52,20 +52,29 @@ $this->need('header.php'); ?>
 <script>
     //动态控制文章目录树的显示位置
     function displayWindowSize(){
+        //获取滚动高度
+        let scrollTop = document.documentElement.scrollTop;
         //获取文章离屏幕左边的距离
         let offsetLeft = document.getElementsByClassName("row")[0].offsetLeft;
-        //获取窗口的宽度和高度，不包括滚动条
-        var width = document.body.clientWidth;
-        //当屏幕宽带小于1600时隐藏文章目录树
-        if (width < 1630) {
-            document.getElementById("page-tree").style.display = "none";
+        if (scrollTop < 1600) {
+            //获取窗口的宽度和高度，不包括滚动条
+            var width = document.body.clientWidth;
+            //当屏幕宽带小于1600时隐藏文章目录树
+            if (width < 1630) {
+                document.getElementById("page-tree").style.display = "none";
+            } else {
+                document.getElementById("page-tree").style.display = "block";
+                document.getElementById("page-tree").style.left = (offsetLeft - 207) + "px";
+            }
         } else {
-            document.getElementById("page-tree").style.display = "block";
-            document.getElementById("page-tree").style.left = (offsetLeft - 207) + "px";
+            console.log(offsetLeft);
+            document.getElementById("page-tree").style.left = (offsetLeft + 923) + "px";
         }
     }
-    //将事件侦听器函数附加到窗口的resize事件
-    window.addEventListener("resize", displayWindowSize);
+    //事件侦听器添加监听窗口的resize事件和scroll滚动事件
+    ['resize','scroll'].forEach(function(item,index){
+        window.addEventListener(item, displayWindowSize);
+    })
     //第一次调用该函数
     displayWindowSize();
 </script>
