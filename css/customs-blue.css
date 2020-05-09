@@ -231,6 +231,20 @@ a, a:hover, a:focus {
     #timeline li:hover {
         color: #c7c7c7 !important;
     }
+    /* 友链页面 */
+    .link-box a .content .title {
+        color: #fff;
+    }
+    .link-box a .content {
+        background-color: #2c2a2a;
+    }
+    .link-box a {
+        background: #35363a;
+        height: 90%;
+    }
+    .link-box a .thumb {
+        height: 70%;
+    }
 }
 
 
