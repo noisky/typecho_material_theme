@@ -56,7 +56,7 @@ $this->need('header.php'); ?>
         let scrollTop = document.documentElement.scrollTop;
         //获取文章离屏幕左边的距离
         let offsetLeft = document.getElementsByClassName("row")[0].offsetLeft;
-        if (scrollTop < 1600) {
+        if (scrollTop < 1900) {
             //获取窗口的宽度和高度，不包括滚动条
             var width = document.body.clientWidth;
             //当屏幕宽带小于1600时隐藏文章目录树
