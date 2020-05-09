@@ -76,7 +76,7 @@ a, a:hover, a:focus {
     /* banner */
     .billboard {
         background: none;
-        padding: 100px 50px 50px;
+        padding: 100px 8px 50px;
         box-shadow: none;
     }
     /* 搜索框 */
