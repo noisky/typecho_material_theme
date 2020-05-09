@@ -71,13 +71,12 @@ a, a:hover, a:focus {
     }
     /* header */
     .navbar.navbar-inverse {
-        background-color: #35363A;
+        background-color: rgba(53, 54, 58, .92);
     }
     /* banner */
     .billboard {
-        background: none;
-        padding: 100px 8px 50px;
-        box-shadow: none;
+        opacity: 0.75;
+        filter: alpha(opacity=40);
     }
     /* 搜索框 */
     .btn-primary:not(.btn-link):not(.btn-flat) {
@@ -115,10 +114,6 @@ a, a:hover, a:focus {
     }
     .col-md-3 .panel .item:hover {
         background: #5d5d5d;
-    }
-    /* 侧栏微主页 */
-    .photo-background {
-        background: none !important;
     }
     /* 文章页 */
     .panel {
@@ -225,6 +220,16 @@ a, a:hover, a:focus {
     }
     .btn-info:active:not(.btn-link):not(.btn-flat) {
         background-color: #3e3e3e;
+    }
+    /* 关于我 */
+    .name a {
+        color: #fff !important;
+    }
+    #timeline li {
+        color: #969696;
+    }
+    #timeline li:hover {
+        color: #c7c7c7 !important;
     }
 }
 
