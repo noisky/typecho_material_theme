@@ -11,7 +11,7 @@
 
 并且移除 comments.php 中的表情插件的输出语句`<?php Smilies_Plugin::output(); ?>`
 
-表情插件还没整理...
+表情插件还没整理.....
 
 ## feature
 
