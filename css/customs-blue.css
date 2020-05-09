@@ -1,0 +1,57 @@
+:root {
+    --header: rgba(33, 150, 243, .92);
+    --globalColor: #03A9F4;
+    --globalWeightColor: #2196f3;
+}
+/* header */
+.navbar.navbar-inverse {
+    background-color: var(--header);
+}
+/* sidebar */
+.panel-primary>.panel-heading {
+    background-color: var(--globalColor);
+}
+/* a */
+a, a:hover, a:focus {
+    color: var(--globalWeightColor);
+}
+/* search-button */
+.btn-primary:not(.btn-link):not(.btn-flat) {
+    background-color: var(--globalColor);
+}
+.btn-primary:hover:not(.btn-link):not(.btn-flat) {
+    background-color: var(--globalColor);
+}
+.btn-primary:active:not(.btn-link):not(.btn-flat) {
+    background-color: var(--globalColor);
+}
+/* search-input */
+.form-control-wrapper .form-control:invalid {
+    background-image: linear-gradient(var(--globalColor),var(--globalColor)),linear-gradient(#d2d2d2,#d2d2d2);
+}
+.form-control:focus, .form-control.focus {
+    background-image: linear-gradient(var(--globalColor),var(--globalColor)),linear-gradient(#d2d2d2,#d2d2d2);
+}
+/* search-input-text */
+.form-control-wrapper .form-control:focus~.floating-label {
+    color: var(--globalColor);
+}
+/* comment-input */
+.form-group .form-control:focus {
+    background-image: linear-gradient(var(--globalColor),var(--globalColor)),linear-gradient(#d2d2d2,#d2d2d2);
+}
+/* comment-button */
+.btn-success:not(.btn-link):not(.btn-flat) {
+    background-color: var(--globalWeightColor);
+}
+.btn-success:hover:not(.btn-link):not(.btn-flat) {
+    background-color: var(--globalWeightColor);
+}
+/* comment-smilies-box */
+#smiliesbox::-webkit-scrollbar-thumb {
+    background-color: var(--globalColor);
+}
+/* post-menu */
+.index-box-title {
+    background-color: var(--globalColor);
+}
