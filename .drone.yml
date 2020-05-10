@@ -1,0 +1,41 @@
+# drone 构建属性
+kind: pipeline
+type: docker
+name: Material theme
+
+# drone构建步骤
+steps:
+  # 使用ssh访问主机 拉取最新代码
+  - name: ssh SKY-TX
+    pull: if-not-exists
+    image: appleboy/drone-ssh:1.5.7
+    settings:
+      host:
+        from_secret: host
+      username:
+        from_secret: username
+      password:
+        from_secret: ssh_password_SKY-TX
+      port:
+        from_secret: port
+      script:
+        - cd /data/wwwroot/ffis.me && ./gitpull.sh
+
+#   钉钉通知
+  - name: dingTalk notification
+    pull: if-not-exists
+    image: guoxudongdocker/drone-dingtalk:latest
+    settings:
+      token:
+        from_secret: dingtalk_token
+      type: markdown
+      message_color: true
+      message_pic: true
+      sha_link: true
+    when:
+      status: [failure, success]
+
+# drone执行触发器
+trigger:
+  branch:
+    - master
