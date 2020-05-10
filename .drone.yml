@@ -21,7 +21,7 @@ steps:
       script:
         - cd /data/wwwroot/ffis.me && ./gitpull.sh
 
-#   钉钉通知
+  # 钉钉通知
   - name: dingTalk notification
     pull: if-not-exists
     image: guoxudongdocker/drone-dingtalk:latest
