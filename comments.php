@@ -1,17 +1,66 @@
-<?php 
-if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$this->comments()->to($comments); ?>
+<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<!--重写评论列表-->
+<?php function threadedComments($comments, $options) {
+    $commentClass = '';
+    if ($comments->authorId) {
+        if ($comments->authorId == $comments->ownerId) {
+            $commentClass .= ' comment-by-author';
+        } else {
+            $commentClass .= ' comment-by-user';
+        }
+    }
+
+    $commentLevelClass = $comments->levels > 0 ? ' comment-child' : ' comment-parent';
+    ?>
+
+    <li id="<?php $comments->theId(); ?>" class="comment-body<?php
+    if ($comments->levels > 0) {
+        echo ' comment-child';
+        $comments->levelsAlt(' comment-level-odd', ' comment-level-even');
+    } else {
+        echo ' comment-parent';
+    }
+    $comments->alt(' comment-odd', ' comment-even');
+    echo $commentClass;
+    ?>">
+        <div class="comment-author">
+            <?php
+            //评论如果是qq邮箱则显示qq头像
+            $email = $comments->mail;
+            if(preg_match('/^[1-9]\d{4,12}@qq\.com$/', $email)){
+                echo '<img class="avatar" src="//q2.qlogo.cn/g?b=qq&nk='.$email.'&s=40" alt=' . $comments->author .' width="40" height="40">';
+            }else{
+                $comments->gravatar('40', '');
+            }?>
+            <cite class="fn"><?php $comments->author(); ?></cite>
+        </div>
+        <div class="comment-meta">
+            <a href="<?php $comments->permalink(); ?>"><?php $comments->date('Y-m-d H:i'); ?></a>
+        </div>
+        <div class="comment-content">
+            <?php $comments->content(); ?>
+        </div>
+        <div class="comment-reply">
+            <?php $comments->reply('<button type="button" class="btn btn-danger btn-xs fa fa-reply reply-button"></button>'); ?>
+        </div>
+        <?php if ($comments->children) { ?>
+            <div class="comment-children">
+                <?php $comments->threadedComments($options); ?>
+            </div>
+        <?php } ?>
+    </li>
+<?php } ?>
 <div class="row">
     <div id="comments">
-
+        <?php $this->comments()->to($comments); ?>
 
 <?php if($this->allow('comment')): ?>
 <div class="alert alert-info">
     <span id="commentCount"><?php $this->commentsNum(_t('还不快抢沙发'), _t('只有地板了'), _t('已有 %d 条评论')); ?></span>
 </div>
-<?php $comments->listComments(array(
-            'replyWord'=>'<button type="button" class="btn btn-danger btn-xs fa fa-reply reply-button"></button>',
-           )); ?>
+
+<?php $comments->listComments(); ?>
+
 <?php $comments->pageNav('&laquo;', '&raquo;', 3, '...', array('wrapTag' => 'ol', 'wrapClass' => 'pagination', 'itemTag' => 'li', 'textTag' => 'span', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
 <div id="<?php $this->respondId(); ?>" class="respond">
 <div class="respond panel panel-default">
@@ -29,7 +78,6 @@ $this->comments()->to($comments); ?>
 
 		        <!-- 若当前用户未登录 -->
 		        <?php else: ?>
-
 
 		    	<div class="form-group">
 		    		<label for="author" class="col-sm-1 control-label required">昵称</label>
