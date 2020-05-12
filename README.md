@@ -1,4 +1,6 @@
 # typecho-material-theme
+[![Build Status](https://drone.ffis.me/api/badges/noisky/typecho_material_theme/status.svg)](https://drone.ffis.me/noisky/typecho_material_theme)
+
 这是 Noisky 修改的基于 Material 的 Typecho 模板
 
 ![预览图](./screenshot.png)
