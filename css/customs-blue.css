@@ -245,6 +245,10 @@ a, a:hover, a:focus {
     .link-box a .thumb {
         height: 70%;
     }
+    /* 表格 */
+    .post-content table tr:nth-child(2n), .post-content thead {
+        background: #46484e;
+    }
 }
 
 
