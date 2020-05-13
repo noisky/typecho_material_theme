@@ -25,13 +25,14 @@
     ?>">
         <div class="comment-author">
             <?php
-            //评论如果是qq邮箱则显示qq头像
-            $email = $comments->mail;
-            if(preg_match('/^[1-9]\d{4,12}@qq\.com$/', $email)){
-                echo '<img class="avatar" src="//q2.qlogo.cn/g?b=qq&nk='.$email.'&s=40" alt=' . $comments->author .' width="40" height="40">';
-            }else{
+            //评论如果是qq邮箱则显示qq头像【头像地址会泄露用户邮箱地址，暂时取消，后期考虑使用api加密邮箱然后进行转发】
+//            $email = $comments->mail;
+//            if(preg_match('/^[1-9]\d{4,12}@qq\.com$/', $email)){
+//                echo '<img class="avatar" src="//q2.qlogo.cn/g?b=qq&nk='.$email.'&s=40" alt=' . $comments->author .' width="40" height="40">';
+//            }else{
                 $comments->gravatar('40', '');
-            }?>
+//            }
+            ?>
             <cite class="fn"><?php $comments->author(); ?></cite>
         </div>
         <div class="comment-meta">
