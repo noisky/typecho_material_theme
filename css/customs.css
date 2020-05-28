@@ -117,7 +117,7 @@ ul.nav.navbar-nav {
 }
 
 .post-content {
-    overflow: auto;
+    overflow: visible;
     word-wrap: break-word;
     line-height: 28px;
     font-size: 14px;

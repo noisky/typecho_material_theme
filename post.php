@@ -67,7 +67,7 @@ $this->need('header.php'); ?>
                 document.getElementById("page-tree").style.left = (offsetLeft - 207) + "px";
             }
         } else {
-            console.log(offsetLeft);
+            // console.log(offsetLeft);
             document.getElementById("page-tree").style.left = (offsetLeft + 923) + "px";
         }
     }
