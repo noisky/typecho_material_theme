@@ -2,12 +2,16 @@
 <!--重写评论列表-->
 <?php function threadedComments($comments, $options) {
     $commentClass = '';
+    $Identity = '';
     if ($comments->authorId) {
         if ($comments->authorId == $comments->ownerId) {
             $commentClass .= ' comment-by-author';
+            $Identity = '<label class="label commit-author">博主</label>';
         } else {
             $commentClass .= ' comment-by-user';
         }
+    } else {
+        $Identity = '';
     }
 
     $commentLevelClass = $comments->levels > 0 ? ' comment-child' : ' comment-parent';
@@ -37,7 +41,7 @@
                 $comments->gravatar('40', '');
             }
             ?>
-            <cite class="fn"><?php $comments->author(); ?></cite>
+            <cite class="fn"><?php $comments->author(); ?><?php echo $Identity; ?></cite>
         </div>
         <div class="comment-meta">
             <a href="<?php $comments->permalink(); ?>"><?php $comments->date('Y-m-d H:i'); ?></a>

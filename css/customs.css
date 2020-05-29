@@ -1126,6 +1126,10 @@ a.no-underline {
     color: #ff5722
 }
 
+.commit-author {
+    background-color: #f44336;
+}
+
 a.no-underline:hover:after {
     width: 0 !important
 }
