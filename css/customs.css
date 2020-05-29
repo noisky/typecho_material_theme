@@ -1122,6 +1122,10 @@ a.no-underline {
     border-bottom: none !important
 }
 
+.loadErr {
+    color: #ff5722
+}
+
 a.no-underline:hover:after {
     width: 0 !important
 }

@@ -29,10 +29,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <?php $this->footer(); ?>
 <script src="//static.ffis.me/javascript/jquery-2.2.4.min.js"></script>
 <script src="//static.ffis.me/javascript/bootstrap.min.js" async defer></script>
-<!--<script src="//static.ffis.me/javascript/merge.min.js?v=2020041001"></script>-->
-<script src="<?php $this->options->themeUrl('js/merge.min.js'); ?>"></script>
-<script src="//static.ffis.me/javascript/MyCustom.min.js?v=2020051101"></script>
-<!--<script src="--><?php //$this->options->themeUrl('js/MyCustom.js?v=20200409'); ?><!--"></script>-->
+<script src="//static.ffis.me/javascript/merge.min.js?v=2020052901"></script>
+<!--<script src="--><?php //$this->options->themeUrl('js/merge.min.js'); ?><!--"></script>-->
+<script src="//static.ffis.me/javascript/MyCustom.min.js?v=2020052901"></script>
+<!--<script src="--><?php //$this->options->themeUrl('js/MyCustom.js'); ?><!--"></script>-->
 </body>
 <!-- 统计代码 -->
 <?php $this->options->statiStics()?>
