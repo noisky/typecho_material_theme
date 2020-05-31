@@ -165,6 +165,94 @@
 	</div>
 </div>
 </div>
+    <script>
+        /* 极验验证码 */
+        window.onload = function () {
+            var handler = function (captchaObj) {
+                captchaObj.appendTo('#captcha');
+                captchaObj.onReady(function () {
+                    $("#wait").hide();
+                });
+                // $('#sub_btn').click(function () {
+                $('#comment_form').submit(function () {
+                    var result = captchaObj.getValidate();
+                    if (!result) {
+                        alert('请完成验证码验证嗷~');
+                        return false;
+                    }
+                    var submit = false;
+                    $.ajax({
+                        url: 'https://api.ffis.me/geetest/validate',
+                        async: false, //二次验证改为同步请求，方便处理请求结果
+                        type: 'POST',
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        dataType: 'json',
+                        data: {
+                            challenge: result.geetest_challenge,
+                            validate: result.geetest_validate,
+                            seccode: result.geetest_seccode
+                        },
+                        success: function (data) {
+                            if (data.data.result === 'success') {
+                                // alert('验证成功');
+                                submit = true;
+                            } else if (data.data.result === 'fail') {
+                                alert('验证失败，请重新验证');
+                                captchaObj.reset();
+                                submit = false;
+                            }
+                        }
+                    });
+                    //控制表单提交
+                    if (submit) {
+                        return submit;
+                    } else {
+                        return submit;
+                    }
+                })
+                window.gt = captchaObj;
+            };
+            var errHanlder = function () {
+                $('#comment_form').submit(function () {
+                    alert('验证码加载失败！无法提交评论');
+                    return false;
+                })
+            };
+            $.ajax({
+                url: "https://api.ffis.me/geetest/register?t=" + (new Date()).getTime(), // 加随机数防止缓存
+                // async: false,
+                timeout: 2000,
+                type: "get",
+                xhrFields: {
+                    withCredentials: true
+                },
+                dataType: "json",
+                success: function (data) {
+                    $('#text').hide();
+                    $('#wait').show();
+                    // 调用 initGeetest 进行初始化
+                    // 参数1：配置参数
+                    // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它调用相应的接口
+                    initGeetest({
+                        // 以下 4 个配置参数为必须，不能缺少
+                        gt: data.data.gt,
+                        challenge: data.data.challenge,
+                        offline: !data.data.success, // 表示用户后台检测极验服务器是否宕机
+                        new_captcha: data.data.new_captcha, // 用于宕机时表示是新验证码的宕机
+                        product: "float", // 产品形式，包括：float，popup
+                        width: "200px",
+                        // https: false
+                    }, handler);
+                },
+                error: function (data) {
+                    $('#text').html("行为验证™ 安全组件 <span class='loadErr'>加载失败！</span>")
+                    errHanlder()
+                }
+            });
+        };
+    </script>
 <?php else: ?>
 	<div class="alert alert-warning">
 	    <span id="commentCount">评论已关闭</span>

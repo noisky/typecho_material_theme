@@ -31,7 +31,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <script src="//static.ffis.me/javascript/bootstrap.min.js" async defer></script>
 <script src="//static.ffis.me/javascript/merge.min.js?v=2020052901"></script>
 <!--<script src="--><?php //$this->options->themeUrl('js/merge.min.js'); ?><!--"></script>-->
-<script src="//static.ffis.me/javascript/MyCustom.min.js?v=2020052901"></script>
+<script src="//static.ffis.me/javascript/MyCustom.min.js?v=2020053101"></script>
 <!--<script src="--><?php //$this->options->themeUrl('js/MyCustom.js'); ?><!--"></script>-->
 </body>
 <!-- 统计代码 -->
