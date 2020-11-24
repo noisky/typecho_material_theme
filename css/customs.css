@@ -8,9 +8,8 @@ body {
 }
 
 p {
-    line-height: 28px;
+    line-height: 26px;
     font-size: 14px;
-	margin: 0px;
 }
 
 body > .container {
