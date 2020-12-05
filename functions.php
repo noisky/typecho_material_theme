@@ -1,4 +1,9 @@
 <?php
+/**
+ * Material Typecho Theme
+ * 主题功能设置文件
+ * functions.php
+ */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 function themeConfig($form) {
     $slogan = new Typecho_Widget_Helper_Form_Element_Text('slogan', NULL, NULL, _t('首页图片标语文字'), _t('在这里填入一段文字，作为首页图片中的主要文字，留空则不显示'));

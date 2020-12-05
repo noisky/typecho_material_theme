@@ -46,7 +46,9 @@ $this->need('header.php');
                         <span>/&nbsp;&nbsp;评论：<a href="<?php $this->permalink() ?>"><?php $this->commentsNum('%d 评论'); ?></a> </span>
                         <span>/&nbsp;&nbsp;时间：<?php $this->date('Y-m-d H:i'); ?></span>
 			        </div>
-			        <div class="post-content"><?php $this->content('- 阅读剩余部分 -'); ?></div>
+			        <div class="post-content">
+                        <?php $this->content('- 阅读剩余部分 -'); ?>
+                    </div>
 			    </div>
 		    </div>
 		    <?php endwhile; ?>

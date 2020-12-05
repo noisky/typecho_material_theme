@@ -1,4 +1,10 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<?php
+/**
+ * Material Typecho Theme
+ * 评论模板文件，重写了评论列表实现
+ * comments.php
+ */
+if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <!--重写评论列表-->
 <?php function threadedComments($comments, $options) {
     $commentClass = '';

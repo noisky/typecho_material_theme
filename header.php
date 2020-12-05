@@ -20,27 +20,27 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             'author' => _t('%s 发布的文章')
         ), '', ' - '); ?><?php $this->options->title(); ?></title>
 <?php if($this->is('index')): ?>
-    <link rel="dns-prefetch" href="//api.ffis.me" />
-    <link rel="dns-prefetch" href="//static.ffis.me" />
-    <link rel="dns-prefetch" href="//static.noisky.cn" />
-    <link rel="dns-prefetch" href="//v1.hitokoto.cn" />
-    <link rel="dns-prefetch" href="//hm.baidu.com" />
-    <link rel="dns-prefetch" href="//www.google-analytics.com" />
-    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://api.ffis.me" />
+    <link rel="dns-prefetch" href="https://static.ffis.me" />
+    <link rel="dns-prefetch" href="https://static.noisky.cn" />
+    <link rel="dns-prefetch" href="https://v1.hitokoto.cn" />
+    <link rel="dns-prefetch" href="https://hm.baidu.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 <?php endif;?>
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php $this->options->siteIcon() ?>"/>
     <link rel="Shortcut Icon" href="<?php $this->options->siteIcon() ?>"/>
     <link rel="Bootmark" href="<?php $this->options->siteIcon() ?>"/>
-    <link rel="stylesheet" href="//static.ffis.me/stylesheet/bootstrap.min.css?v20200413"/>
-    <link rel="stylesheet" href="//static.ffis.me/stylesheet/material.min.css?v=2019123001"/>
+    <link rel="stylesheet" href="https://static.ffis.me/stylesheet/bootstrap.min.css?v20200413"/>
+    <link rel="stylesheet" href="https://static.ffis.me/stylesheet/material.min.css?v=2019123001"/>
 <!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/material.min.css'); ?><!--">-->
-    <link rel="stylesheet" href="//static.ffis.me/stylesheet/customs.min.css?v=2020112401"/>
+    <link rel="stylesheet" href="https://static.ffis.me/stylesheet/customs.min.css?v=2020112401"/>
 <!--   <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/customs.css'); ?><!--">-->
-    <link rel="stylesheet" href="//static.ffis.me/stylesheet/customs-blue.min.css?v=2020060701"/>
+    <link rel="stylesheet" href="https://static.ffis.me/stylesheet/customs-blue.min.css?v=2020060701"/>
 <!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/customs-blue.css'); ?><!--">-->
     <!--[if lt IE 9]>
-    <script src="//static.ffis.me/javascript/html5shiv.js"></script>
-    <script src="//static.ffis.me/javascript/respond.js"></script>
+    <script src="https://static.ffis.me/javascript/html5shiv.js"></script>
+    <script src="https://static.ffis.me/javascript/respond.js"></script>
     <![endif]-->
     <?php $this->header(); ?>
 </head>

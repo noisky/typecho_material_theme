@@ -104,6 +104,25 @@ $.scrollUp({
     scrollText: "回顶部"
 });
 $('#scrollUp').addClass('btn btn-info btn-fab btn-raised fa fa-angle-up');
+/* 图片懒加载配置 */
+jQuery("img").lazyload({
+    //图片加载前的替换图片，generate from https://loading.io/
+    placeholder : "https://static.ffis.me/img/loading.svg",
+    //提前开始加载高度
+    threshold: 100,
+    //载入效果：effect(特效)、show(直接显示)、fadeIn(淡入)、slideDown(下拉)
+    effect: "show"
+});
+//预加载图片处理
+let preloadingImgs = document.querySelectorAll(".preloading-img");
+//遍历预加载图片集合
+for (let i = 0; i < preloadingImgs.length; i++) {
+    let img = preloadingImgs[i];
+    //获取图片真实地址
+    let src = img.getAttribute('data-original');
+    //预加载图片，取消图片懒加载
+    img.setAttribute('src', src);
+}
 /* 鼠标点击特效 */
 //定义获取词语下标
 var a_idx = 0;

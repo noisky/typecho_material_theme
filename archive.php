@@ -1,4 +1,9 @@
-<?php 
+<?php
+/**
+ * Material Typecho Theme
+ * 搜索结果显示模板文件
+ * archive.php
+ */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 require_once $this->getThemeDir() . 'functions.php';
 $this->need('header.php'); ?>
