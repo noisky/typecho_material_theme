@@ -36,7 +36,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/material.min.css'); ?><!--">-->
     <link rel="stylesheet" href="https://static.ffis.me/stylesheet/customs.min.css?v=2020120501"/>
 <!--   <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/customs.css'); ?><!--">-->
-    <link rel="stylesheet" href="https://static.ffis.me/stylesheet/customs-blue.min.css?v=2020060701"/>
+    <link rel="stylesheet" href="https://static.ffis.me/stylesheet/customs-blue.min.css?v=2020120601"/>
 <!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/customs-blue.css'); ?><!--">-->
     <!--[if lt IE 9]>
     <script src="https://static.ffis.me/javascript/html5shiv.js"></script>

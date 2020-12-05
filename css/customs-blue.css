@@ -1,64 +1,65 @@
 /* 默认浅色配色 */
 :root {
+    /* IE不支持使用CSS变量 所以改为全文手动替换的形式 */
     --header: rgba(33, 150, 243, .92);
     --globalColor: #03A9F4;
     --globalWeightColor: #2196f3;
 }
 /* header */
 .navbar.navbar-inverse {
-    background-color: var(--header);
+    background-color: rgba(33, 150, 243, .92);
 }
 /* 侧栏白头部 */
 .panel-primary>.panel-heading {
-    background-color: var(--globalColor);
+    background-color: #03A9F4;
 }
 /* 超链接 */
 a, a:hover, a:focus {
-    color: var(--globalWeightColor);
+    color: #2196f3;
 }
 /* 搜索框 */
 .btn-primary:not(.btn-link):not(.btn-flat) {
-    background-color: var(--globalColor);
+    background-color: #03A9F4;
 }
 .btn-primary:hover:not(.btn-link):not(.btn-flat) {
-    background-color: var(--globalColor);
+    background-color: #03A9F4;
 }
 .btn-primary:active:not(.btn-link):not(.btn-flat) {
-    background-color: var(--globalColor);
+    background-color: #03A9F4;
 }
 /* 搜索输入框 */
 .form-control-wrapper .form-control:invalid {
-    background-image: linear-gradient(var(--globalColor),var(--globalColor)),linear-gradient(#d2d2d2,#d2d2d2);
+    background-image: linear-gradient(#03A9F4,#03A9F4),linear-gradient(#d2d2d2,#d2d2d2);
 }
 .form-control:focus, .form-control.focus {
-    background-image: linear-gradient(var(--globalColor),var(--globalColor)),linear-gradient(#d2d2d2,#d2d2d2);
+    background-image: linear-gradient(#03A9F4,#03A9F4),linear-gradient(#d2d2d2,#d2d2d2);
 }
 /* 搜索输入框文字点击 */
 .form-control-wrapper .form-control:focus~.floating-label {
-    color: var(--globalColor);
+    color: #03A9F4;
 }
 /* 搜索输入框文字清空 */
 .form-control-wrapper .form-control:not(.empty):invalid~.floating-label, .form-control-wrapper .form-control.focus:invalid~.floating-label {
-    color: var(--globalColor);
+    color: #03A9F4;
 }
 /* 评论输入下框 */
 .form-group .form-control:focus {
-    background-image: linear-gradient(var(--globalColor),var(--globalColor)),linear-gradient(#d2d2d2,#d2d2d2);
+    background-image: linear-gradient(#03A9F4,#03A9F4),linear-gradient(#d2d2d2,#d2d2d2);
 }
 /* 评论按钮 */
 .btn-success:not(.btn-link):not(.btn-flat) {
-    background-color: var(--globalWeightColor);
+    background-color: #2196f3;
 }
 .btn-success:hover:not(.btn-link):not(.btn-flat) {
-    background-color: var(--globalWeightColor);
+    background-color: #2196f3;
 }
 /* 表情框 */
 #smiliesbox::-webkit-scrollbar-thumb {
-    background-color: var(--globalColor);
+    background-color: #03A9F4;
 }
 /* 文章菜单 */
 .index-box-title {
-    background-color: var(--globalColor);
+    background-color: #03A9F4;
 }
 
 /* 黑暗配色（跟随系统） */
