@@ -5,7 +5,7 @@
  *
  * @package Material Theme
  * @author Noisky
- * @version 2.1.1
+ * @version 2.1.2
  * @link http://ffis.me
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
