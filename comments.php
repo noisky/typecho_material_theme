@@ -189,6 +189,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
                     var submit = false;
                     $.ajax({
                         url: 'https://api.ffis.me/geetest/validate',
+                        // url: 'http://localhost:9090/geetest/validate',
                         async: false, //二次验证改为同步请求，方便处理请求结果
                         type: 'POST',
                         xhrFields: {
@@ -228,6 +229,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
             };
             $.ajax({
                 url: "https://api.ffis.me/geetest/register?t=" + (new Date()).getTime(), // 加随机数防止缓存
+                // url: "http://localhost:9090/geetest/register?t=" + (new Date()).getTime(), // 加随机数防止缓存
                 // async: false,
                 timeout: 2000,
                 type: "get",

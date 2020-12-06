@@ -9,13 +9,14 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /**
  * 使用php缓冲区
  * 图片延缓加载相关处理
- * 替换src为data-original
+ * 替换src为data-src
  */
 //ob_start();
 $echo = ob_get_contents(); //获取缓冲区内容
 ob_clean(); //清空缓冲区内容，不输出到页面
 $preg = '/<img(.*?)src=\"(.*?)\"(.*?)>/i'; //正则匹配所有<img>图片标签
-$replaced = "<img\$1data-original=\"\$2\"\$3>";
+$placeholder = "https://static.ffis.me/img/loading.svg";//图片加载前占位图片
+$replaced = "<img\$1 src=\"$placeholder\" data-src=\"\$2\"\$3>";
 print preg_replace($preg, $replaced, $echo); //重新写入的缓冲区
 ob_end_flush(); //将缓冲区输入到页面，并关闭缓存区
 ?>
@@ -42,9 +43,9 @@ ob_end_flush(); //将缓冲区输入到页面，并关闭缓存区
 <?php $this->footer(); ?>
 <script src="https://static.ffis.me/javascript/jquery-2.2.4.min.js"></script>
 <script src="https://static.ffis.me/javascript/bootstrap.min.js" async defer></script>
-<script src="https://static.ffis.me/javascript/merge.min.js?v=2020120501"></script>
+<script src="https://static.ffis.me/javascript/merge.min.js?v=2020120601"></script>
 <!--<script src="--><?php //$this->options->themeUrl('js/merge.min.js'); ?><!--"></script>-->
-<script src="https://static.ffis.me/javascript/MyCustom.min.js?v=2020120501"></script>
+<script src="https://static.ffis.me/javascript/MyCustom.min.js?v=2020120601"></script>
 <!--<script src="--><?php //$this->options->themeUrl('js/MyCustom.js'); ?><!--"></script>-->
 </body>
 <!-- 统计代码 -->
