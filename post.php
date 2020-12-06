@@ -63,6 +63,8 @@ $this->need('header.php'); ?>
         let scrollTop = document.documentElement.scrollTop;
         //获取文章离屏幕左边的距离
         let offsetLeft = document.getElementsByClassName("row")[0].offsetLeft;
+        //获取文章容器宽度
+        let rowWidth = document.getElementsByClassName("col-md-9")[0].getBoundingClientRect().width;
         if (scrollTop < 1900) {
             //获取窗口的宽度和高度，不包括滚动条
             var width = document.body.clientWidth;
@@ -72,14 +74,19 @@ $this->need('header.php'); ?>
             } else {
                 document.getElementById("page-tree").style.display = "block";
                 document.getElementById("page-tree").style.left = (offsetLeft - 207) + "px";
+                document.getElementById("page-tree").style.width = '200px';
             }
         } else {
             // console.log(offsetLeft);
-            document.getElementById("page-tree").style.left = (offsetLeft + 923) + "px";
+            // document.getElementById("page-tree").style.left = (offsetLeft + 923) + "px";
+            //根据文章宽度移动到侧边栏
+            document.getElementById("page-tree").style.left = (offsetLeft + rowWidth + 12) + "px";
+            //目录宽度增加
+            document.getElementById("page-tree").style.width = '265px';
         }
     }
     //事件侦听器添加监听窗口的resize事件和scroll滚动事件
-    ['resize','scroll'].forEach(function(item,index){
+    ['resize','scroll'].forEach(function(item){
         window.addEventListener(item, displayWindowSize);
     })
     //第一次调用该函数

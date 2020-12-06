@@ -1138,6 +1138,18 @@ a.no-underline:hover:after {
         width: 1200px;
     }
 }
+/* 2k分辨率显示优化 */
+@media (min-width: 2250px) {
+    .container{
+        width: 1800px;
+    }
+}
+/* 4k分辨率显示优化 */
+@media (min-width: 3200px) {
+    .container{
+        width: 2700px;
+    }
+}
 
 @media (min-width: 992px) {
     .col-md-9 {
