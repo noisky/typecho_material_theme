@@ -11,11 +11,11 @@ steps:
     image: appleboy/drone-ssh:1.5.7
     settings:
       host:
-        from_secret: host
+        from_secret: host_lighthouse
       username:
         from_secret: username
       password:
-        from_secret: ssh_password_SKY-TX
+        from_secret: ssh_password_lighthouse
       port:
         from_secret: port
       script:
