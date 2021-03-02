@@ -65,6 +65,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
         <?php } ?>
     </li>
 <?php } ?>
+
 <div class="row">
     <div id="comments">
         <?php if(!$this->allow('comment')): ?>
@@ -80,9 +81,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 
 <?php $comments->listComments(); ?>
 
-<?php if($this->allow('comment')): ?>
 <?php $comments->pageNav('&laquo;', '&raquo;', 3, '...', array('wrapTag' => 'ol', 'wrapClass' => 'pagination', 'itemTag' => 'li', 'textTag' => 'span', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
 <!-- 评论回复框 -->
+<?php if($this->allow('comment')): ?>
 <div id="<?php $this->respondId(); ?>" class="respond">
 <div class="respond panel panel-default">
 	<div class="panel-body">
