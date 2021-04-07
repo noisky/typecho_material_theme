@@ -65,11 +65,16 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
         <?php } ?>
     </li>
 <?php } ?>
+
 <div class="row">
     <div id="comments">
+        <?php if(!$this->allow('comment')): ?>
+            <div class="alert alert-warning">
+                <span id="commentCount">评论已关闭</span>
+            </div>
+        <?php endif; ?>
         <?php $this->comments()->to($comments); ?>
 
-<?php if($this->allow('comment')): ?>
 <div class="alert alert-info">
     <span id="commentCount"><?php $this->commentsNum(_t('还不快抢沙发'), _t('只有地板了'), _t('已有 %d 条评论')); ?></span>
 </div>
@@ -77,6 +82,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $comments->listComments(); ?>
 
 <?php $comments->pageNav('&laquo;', '&raquo;', 3, '...', array('wrapTag' => 'ol', 'wrapClass' => 'pagination', 'itemTag' => 'li', 'textTag' => 'span', 'currentClass' => 'active', 'prevClass' => 'prev', 'nextClass' => 'next')); ?>
+<!-- 评论回复框 -->
+<?php if($this->allow('comment')): ?>
 <div id="<?php $this->respondId(); ?>" class="respond">
 <div class="respond panel panel-default">
 	<div class="panel-body">
@@ -261,10 +268,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
             });
         };
     </script>
-<?php else: ?>
-	<div class="alert alert-warning">
-	    <span id="commentCount">评论已关闭</span>
-	</div>
 <?php endif; ?>
 </div>
 </div>
