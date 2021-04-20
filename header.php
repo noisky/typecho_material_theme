@@ -32,19 +32,19 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <link rel="Shortcut Icon" href="<?php $this->options->siteIcon() ?>"/>
     <link rel="Bootmark" href="<?php $this->options->siteIcon() ?>"/>
 <!--    <link rel="stylesheet" href="https://static.ffis.me/stylesheet/bootstrap.min.css?v20200413"/>-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/css/bootstrap.min.css?v2021042001"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/css/bootstrap.min.css?v2021042001"/>
 <!--    <link rel="stylesheet" href="https://static.ffis.me/stylesheet/material.min.css?v=2019123001"/>-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/css/material.min.css?v=2020042001"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/css/material.min.css?v=2020042001"/>
 <!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/material.min.css'); ?><!--">-->
 <!--    <link rel="stylesheet" href="https://static.ffis.me/stylesheet/customs.min.css?v=2021042002"/>-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/css/customs.min.css?v=2021042003"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/css/customs.min.css?v=2021042003"/>
 <!--   <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/customs.css'); ?><!--">-->
 <!--    <link rel="stylesheet" href="https://static.ffis.me/stylesheet/customs-blue.min.css?v=2020120601"/>-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/css/customs-blue.min.css?v=2020042001"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/css/customs-blue.min.css?v=2020042001"/>
 <!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/customs-white.css'); ?><!--">-->
     <!--[if lt IE 9]>
-    <script src="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/js/html5shiv.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/js/respond.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/js/html5shiv.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/js/respond.js"></script>
     <![endif]-->
     <?php $this->header(); ?>
 </head>
