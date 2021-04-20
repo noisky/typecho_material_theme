@@ -398,8 +398,8 @@ pre {
  */
 @font-face {
     font-family: 'FontAwesome';
-    src: url('//static.ffis.me/homepage/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2');
-    src: url('//static.ffis.me/homepage/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('//static.ffis.me/homepage/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('//static.ffis.me/homepage/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('//static.ffis.me/homepage/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('//static.ffis.me/homepage/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+    src: url('https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2');
+    src: url('https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
     font-weight: normal;
     font-style: normal
 }
@@ -608,7 +608,7 @@ code {
 }
 .Weibo_icon {
     display: inline-block;
-    background-image: url(https://static.ffis.me/img/china_flag_32x28.png);
+    background-image: url(https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/img/china_flag_32x28.png);
     background-repeat: no-repeat;
 }
 .Weibo_icon_logo {

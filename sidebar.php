@@ -25,10 +25,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 	    </a>
 		<aside class="amadeus_about clearfix">
 			<div class="photo-background">
-			    <div class="photo-background" style="background:url(https://static.ffis.me/img/about.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+			    <div class="photo-background" style="background:url(https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/img/about.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
 			<div class="photo-wrapper text-center">
 			<a href="https://ffis.me/about.html" title="关于饭饭">
-                <img src="https://static.ffis.me/img/author.png" alt="关于饭饭" />
+                <img src="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@latest/img/author.png" alt="关于饭饭" />
             </a>
 <!--			<a href="https://ffis.me/about.html" title="关于饭饭"><img src="https://static.noisky.cn/homepage/img/noiskyWithMask.png" alt="关于饭饭"></a>-->
 			<!-- 微博橙V
