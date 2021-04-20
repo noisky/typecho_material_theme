@@ -224,7 +224,16 @@ li p {
     -moz-transition: all .2s ease-out; /* Firefox */
 }
 
-.post-content img:hover {
+/* 文章内容图片阴影 */
+.post-content img:not(.smilies) {
+    display: block;
+    margin: 1.4em auto;
+    border-radius: 2px;
+    box-shadow: 0 1px 6px 0 rgb(0 0 0 / 0.12), 0 1px 6px 0 rgb(0 0 0 / 0.12);
+}
+
+/* 文章内容图片滑动放大特效 */
+.post-content img:not(.smilies):hover {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), 0 6px 10px rgba(0, 0, 0, 0.22);
     transition: all .2s ease-in-out;
     transform: scale(1.03);
@@ -232,14 +241,6 @@ li p {
     -webkit-transform: scale(1.03); /* Safari 和 Chrome */
     -o-transform: scale(1.03); /* Opera */
     -moz-transform: scale(1.03); /* Firefox */
-}
-
-img.smilies {
-    box-shadow: none;
-}
-
-img.smilies:hover {
-    box-shadow: none;
 }
 
 /* Search bar */
