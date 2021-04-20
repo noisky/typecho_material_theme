@@ -225,7 +225,7 @@ li p {
 }
 
 /* 文章内容图片阴影 */
-.post-content img:not(.smilies) {
+.post-content img:not(.smilies,.meta-bak) {
     display: block;
     margin: 1.4em auto;
     border-radius: 2px;
@@ -233,7 +233,7 @@ li p {
 }
 
 /* 文章内容图片滑动放大特效 */
-.post-content img:not(.smilies):hover {
+.post-content img:not(.smilies,.meta-bak):hover {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), 0 6px 10px rgba(0, 0, 0, 0.22);
     transition: all .2s ease-in-out;
     transform: scale(1.03);
