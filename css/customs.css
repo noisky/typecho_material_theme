@@ -45,6 +45,10 @@ ul.nav.navbar-nav {
     background-color: rgba(63, 81, 181, .92)
 }
 
+.navbar-nav > li > a:focus {
+    outline: none;
+}
+
 .billboard {
     background: #b8d9fa url(https://api.ffis.me/imgApi/today/blog-pc) center center repeat-x;
     background-size: cover;

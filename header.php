@@ -32,14 +32,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <link rel="Shortcut Icon" href="<?php $this->options->siteIcon() ?>"/>
     <link rel="Bootmark" href="<?php $this->options->siteIcon() ?>"/>
     <!--加载CDN资源-->
-<!--    <link rel="stylesheet" href="https://static.ffis.me/stylesheet/bootstrap.min.css?v20200413"/>-->
-<!--    <link rel="stylesheet" href="https://static.ffis.me/stylesheet/material.min.css?v=2019123001"/>-->
-<!--    <link rel="stylesheet" href="https://static.ffis.me/stylesheet/customs.min.css?v=2021042002"/>-->
-<!--    <link rel="stylesheet" href="https://static.ffis.me/stylesheet/customs-blue.min.css?v=2020120601"/>-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/css/bootstrap.min.css?v2021042001"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/css/material.min.css?v=2020042001"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/css/customs.min.css?v=2021042003"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/css/customs-blue.min.css?v=2020042001"/>
+   <link rel="stylesheet" href="https://static.ffis.me/stylesheet/bootstrap.min.css?v20200413"/>
+   <link rel="stylesheet" href="https://static.ffis.me/stylesheet/material.min.css?v=2019123001"/>
+   <link rel="stylesheet" href="https://static.ffis.me/stylesheet/customs.min.css?v=2026072601"/>
+   <link rel="stylesheet" href="https://static.ffis.me/stylesheet/customs-blue.min.css?v=2020120601"/>
     <!--加载本地资源-->
 <!--   <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/customs.css'); ?><!--">-->
 <!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/material.min.css'); ?><!--">-->
