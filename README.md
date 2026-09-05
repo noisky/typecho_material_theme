@@ -11,10 +11,6 @@
 
 如需使用请手动把 **所有** 的cdn资源替换为本地资源...
 
-并且移除 comments.php 中的表情插件的输出语句`<?php Smilies_Plugin::output(); ?>`
-
-表情插件还没整理...
-
 ## feature
 
 _全站图片懒加载_
@@ -37,8 +33,10 @@ _备案号自定义_
 
 _定义是否显示加载时间_
 
-## other
+## 支持插件
 
-如需使用友情链接，请使用以下链接的插件
-
+### 友情链接
 https://github.com/noisky/Links_for_Material_Theme
+
+### 表情插件
+https://github.com/noisky/typecho-smilies

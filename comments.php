@@ -4,6 +4,7 @@
  * 评论模板文件，重写了评论列表实现
  * comments.php
  */
+
 if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <!--重写评论列表-->
 <?php function threadedComments($comments, $options) {
@@ -155,8 +156,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 		    			</div>
 		    		</div>
 		    	</div>
+                <?php if (\Typecho\Plugin::exists('Smilies') && class_exists('Smilies_Plugin')): ?>
+                    <?php Smilies_Plugin::output(); ?>
+                <?php endif; ?>
 		    	<div class="form-group">
-				<?php Smilies_Plugin::output(); ?>
 		    		<div class="col-sm-offset-1 col-sm-5">
                         <div id="captcha">
                         </div>
