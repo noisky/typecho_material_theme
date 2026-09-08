@@ -50,7 +50,7 @@ ul.nav.navbar-nav {
 }
 
 .billboard {
-    background: #b8d9fa url(https://api.ffis.me/imgApi/today/blog-pc) center center repeat-x;
+    background: #b8d9fa url(../img/billboard.jpg) center center repeat-x;
     background-size: cover;
     padding: 180px 0px 120px 0px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .25), 0 2px 8px rgba(0, 0, 0, .12)
@@ -59,6 +59,10 @@ ul.nav.navbar-nav {
 .billboard .intro {
     color: #fff;
     text-shadow: 0 0 15px #202020
+}
+
+.billboard.billboard-custom-background {
+    background-image: var(--billboard-background-image);
 }
 
 .col-md-9 {
@@ -226,6 +230,15 @@ li p {
     -webkit-transition: all .2s ease-out; /* Safari 和 Chrome */
     -o-transition: all .2s ease-out; /* Opera */
     -moz-transition: all .2s ease-out; /* Firefox */
+}
+
+/* 原生懒加载图片的占位背景 */
+img[loading="lazy"] {
+    background-color: #f5f5f5;
+    background-image: url(../img/loading.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 32px 32px;
 }
 
 /* 文章内容图片阴影 */
@@ -402,8 +415,8 @@ pre {
  */
 @font-face {
     font-family: 'FontAwesome';
-    src: url('https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2');
-    src: url('https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+    src: url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2');
+    src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
     font-weight: normal;
     font-style: normal
 }
@@ -561,17 +574,32 @@ code {
 /* weibo logo */
 .photo-background {
     height: auto;
+    overflow: hidden;
+    padding: 14px 0 12px;
 }
 
 .photo-wrapper {
     width: 100%;
+    position: relative;
 }
 
 .photo-wrapper img {
-    margin: 14px 0px 0px 20px;
+    display: block;
+    margin: 0 auto;
     max-height: 110px;
     border: rgba(255, 255, 255, .4) 4px solid;
     border-radius: 50%;
+}
+
+.micro-social-row {
+    display: flex;
+    text-align: center;
+}
+
+.micro-social-item {
+    flex: 1 1 0;
+    float: none;
+    vertical-align: top;
 }
 
 .photo-wrapper img:hover {
@@ -593,26 +621,13 @@ code {
 }
 
 .Weibo_icon_position {
-    position: relative;
-    right: 30px;
-    top: 50px;
-}
-
-/* flag */
-.photo-wrapper img {
-    margin: 15px 0px 0px 40px;
-    max-height: 110px;
-    border: rgba(255, 255, 255, .4) 4px solid;
-    border-radius: 50%;
-}
-.Weibo_icon_position {
-    position: relative;
-    right: 34px;
-    top: 67px;
+    position: absolute;
+    left: calc(50% + 34px);
+    top: 78px;
 }
 .Weibo_icon {
     display: inline-block;
-    background-image: url(https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/img/china_flag_32x28.png);
+    background-image: url(../img/china_flag_32x28.png);
     background-repeat: no-repeat;
 }
 .Weibo_icon_logo {
@@ -985,7 +1000,7 @@ h3#response {
     }
 
     .billboard {
-        background: #b8d9fa url(https://api.ffis.me/imgApi/today/blog-mobile) center center repeat-x;
+        background: #b8d9fa url(../img/billboard.jpg) center center repeat-x;
         background-size: cover;
         padding: 200px 0 100px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, .25), 0 2px 8px rgba(0, 0, 0, .12)

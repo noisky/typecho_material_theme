@@ -1,17 +1,18 @@
 <?php
 
 /**
- * 这是 Noisky 修改的基于 Material 的 Typecho 模板
+ * 基于 Material 的 Typecho 模板
  *
  * @package Material Theme
- * @author Noisky
- * @version 2.1.2
+ * @author 饭饭
+ * @version 3.0.0
  * @link http://ffis.me
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $this->need('header.php');
+$billboardImage = materialSafeUrl($this->options->billboardImage, array('http', 'https'), true, false);
 ?>
-<section class="billboard">
+<section class="billboard<?php if ($billboardImage !== ''): ?> billboard-custom-background<?php endif; ?>"<?php if ($billboardImage !== ''): ?> style="--billboard-background-image: url(<?php echo htmlspecialchars($billboardImage, ENT_QUOTES, 'UTF-8'); ?>);"<?php endif; ?>>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-7">
@@ -58,6 +59,8 @@ $this->need('header.php');
 	    <?php $this->need("sidebar.php"); ?>
    </div>
 </div>
-<script src="//v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+<?php if (!$this->options->leanSlogan && (empty($this->options->misc) || !in_array('Showyiyan', $this->options->misc))) : ?>
+    <script src="<?php echo htmlspecialchars(materialHitokotoUrl(), ENT_QUOTES, 'UTF-8'); ?>" defer></script>
+<?php endif; ?>
 <?php $this->need('footer.php'); ?>
 

@@ -1,3 +1,4 @@
+/* 文章页目录 已经合并到merge.min.js */
 ;(function ($, window) {
     var headIndex = (function () {
         function headIndex(element, options) {

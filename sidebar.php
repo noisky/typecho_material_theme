@@ -18,61 +18,63 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 			</span>
 		</div>
 	</form>
+    <?php
+    $microHomeEnabled = !empty($this->options->microHome)
+        && in_array('enable', (array) $this->options->microHome, true);
+    $microAvatar = materialSafeUrl($this->options->microAvatar, array('http', 'https'), true, false);
+    $microAvatar = $microAvatar !== '' ? $microAvatar : materialAssetUrl('img/author.png');
+    $microName = trim((string) $this->options->microName);
+    $microIntro = trim((string) $this->options->microIntro);
+    $microProfileUrl = materialSafeUrl($this->options->microProfileUrl, array('http', 'https'), true, true);
+    $microHomeUrl = materialSafeUrl($this->options->microHomeUrl, array('http', 'https'), true, true);
+    $microWeiboUrl = materialSafeUrl($this->options->microWeiboUrl, array('http', 'https'), true, true);
+    $microEmailUrl = materialSafeUrl($this->options->microEmailUrl, array('http', 'https', 'mailto', 'tel'), true, true);
+    $microGithubUrl = materialSafeUrl($this->options->microGithubUrl, array('http', 'https'), true, true);
+    ?>
+    <?php if ($microHomeEnabled): ?>
     <!-- 微主页 -->
 	<div class="panel panel-primary">
 	<a class="panel-heading" onclick="$('.amadeus_about').slideToggle()" href="javascript:;">
 	        <h3 class="panel-title">微主页</h3>
 	    </a>
 		<aside class="amadeus_about clearfix">
-			<div class="photo-background">
-			    <div class="photo-background" style="background:url(https://static.ffis.me/img/about.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
-			<div class="photo-wrapper text-center">
-			<a href="https://ffis.me/about.html" title="关于饭饭">
-                <img src="https://static.ffis.me/img/author.png" alt="关于饭饭" />
-            </a>
-<!--			<a href="https://ffis.me/about.html" title="关于饭饭"><img src="https://static.noisky.cn/homepage/img/noiskyWithMask.png" alt="关于饭饭"></a>-->
-			<!-- 微博橙V
-			<a href="http://weibo.com/u/5230249128" class="Weibo_icon_position"><em title="前往饭饭的微博" class="Weibo_icon Weibo_icon_logo"></em></a>-->
-			<!-- 国旗 -->
-			<a href="#" class="Weibo_icon_position"><em title="庆祝新中国成立70周年" class="Weibo_icon Weibo_icon_logo"></em></a>
+			<div class="photo-background" style="background:url(<?php echo htmlspecialchars(materialAssetUrl('img/about.jpg'), ENT_QUOTES, 'UTF-8'); ?>) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding:14px 0 12px; overflow:hidden;">
+			<div class="photo-wrapper text-center" style="position:relative;">
+            <?php if ($microProfileUrl !== ''): ?><a href="<?php echo htmlspecialchars($microProfileUrl, ENT_QUOTES, 'UTF-8'); ?>" title="关于饭饭">
+            <?php endif; ?>
+                <img src="<?php echo htmlspecialchars($microAvatar, ENT_QUOTES, 'UTF-8'); ?>" loading="lazy" decoding="async" width="110" height="110" alt="<?php echo htmlspecialchars($microName, ENT_QUOTES, 'UTF-8'); ?>" style="display:block;margin:0 auto;" />
+            <?php if ($microProfileUrl !== ''): ?></a><?php endif; ?>
+            <!-- 纪念图标与头像共用链接 -->
+            <?php if ($microProfileUrl !== ''): ?><a href="<?php echo htmlspecialchars($microProfileUrl, ENT_QUOTES, 'UTF-8'); ?>" class="Weibo_icon_position" style="position:absolute; left:calc(50% + 34px); top:78px; right:auto;" target="_blank" rel="nofollow"><em title="纪念图标" class="Weibo_icon Weibo_icon_logo"></em></a><?php endif; ?>
 			</div>
-			<div class="pf_username">
-				<div class="username">饭饭</div>
-			</div>
-			<div class="pf_intro"><a href="https://noisky.cn" target="_blank" title="饭饭的主页">@Noisky</a></div>
-			<div class="user-footer">
-			  <div class="row">
-                <div class="col-xs-3 border-right center-block">
+            <?php if ($microName !== ''): ?><div class="pf_username"><div class="username"><?php echo htmlspecialchars($microName, ENT_QUOTES, 'UTF-8'); ?></div></div><?php endif; ?>
+            <?php if ($microIntro !== ''): ?><div class="pf_intro"><?php if ($microHomeUrl !== ''): ?><a href="<?php echo htmlspecialchars($microHomeUrl, ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="nofollow" title="微主页个人主页"><?php endif; ?><?php echo htmlspecialchars($microIntro, ENT_QUOTES, 'UTF-8'); ?><?php if ($microHomeUrl !== ''): ?></a><?php endif; ?></div><?php endif; ?>
+			<?php
+            $microIcons = array();
+            if ($microHomeUrl !== '') $microIcons[] = array($microHomeUrl, 'fa fa-home fa-fw fa-lg', '个人主页');
+            if ($microWeiboUrl !== '') $microIcons[] = array($microWeiboUrl, 'fa fa-weibo fa-fw fa-lg', '微博');
+            if ($microEmailUrl !== '') $microIcons[] = array($microEmailUrl, 'social fa fa-envelope', '邮箱');
+            if ($microGithubUrl !== '') $microIcons[] = array($microGithubUrl, 'fa fa-github fa-fw fa-lg', 'GitHub');
+            ?>
+            <?php if (!empty($microIcons)): ?>
+            <div class="user-footer">
+              <div class="row micro-social-row" style="display:flex;text-align:center;">
+                <?php foreach ($microIcons as $index => $microIcon): ?>
+                <div class="micro-social-item<?php echo $index < count($microIcons) - 1 ? ' border-right' : ''; ?>" style="flex:1 1 0;float:none;">
                     <div class="description-block">
-                        <a href="https://noisky.cn" target="_blank" title="饭饭的主页" class="description-header">
-						<i class="fa fa-home fa-fw fa-lg" aria-hidden="true"></i></a>
+                        <a href="<?php echo htmlspecialchars($microIcon[0], ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="nofollow" title="<?php echo htmlspecialchars($microIcon[2], ENT_QUOTES, 'UTF-8'); ?>" class="description-header">
+                            <i class="<?php echo htmlspecialchars($microIcon[1], ENT_QUOTES, 'UTF-8'); ?>" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="col-xs-3 border-right center-block">
-                    <div class="description-block">
-                        <a href="https://weibo.com/u/5230249128" target="_blank" title="微博 @五分缘" class="description-header">
-						<i class="fa fa-weibo fa-fw fa-lg" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-                <div class="col-xs-3 border-right center-block">
-                    <div class="description-block">
-                        <!-- <a href="https://telegram.me/ashedududu" target="_blank" title="Telegram @ashedududu" class="description-header">
-						<i class="fa fa-telegram fa-fw fa-lg" aria-hidden="true"></i></a> -->
-						<a href="mailto:i@ffis.me" target="_blank" title="发邮件给我" class="description-header">
-						<i class="social fa fa-envelope" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-                <div class="col-xs-3 center-block">
-                    <div class="description-block">
-                        <a href="https://github.com/noisky" target="_blank" title="Github @Noisky" class="description-header">
-						<i class="fa fa-github fa-fw fa-lg" aria-hidden="true"></i></a>
-                    </div>
-                </div>
+                <?php endforeach; ?>
               </div>
+            </div>
+            <?php endif; ?>
 			</div>
-			</div></div>
 	</aside>  
     </div>
+    <?php endif; ?>
 
 	<div class="panel panel-primary">
 	    <a class="panel-heading" onclick="$('.recent_posts_box').slideToggle()" href="javascript:;">

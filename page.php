@@ -18,9 +18,7 @@ $this->need('header.php'); ?>
                         <?php $this->content(); ?>
                     </div>
                 </div>
-                <div class="post-copyright">
-                    本文由 <b><a href="https://ffis.me/author/1/">Noisky</a></b> 创作，采用 <b><a target="_blank" href="https://creativecommons.org/licenses/by/4.0/" rel="external nofollow">知识共享署名 4.0</a></b> 国际许可协议进行许可。
-                    可自由转载、引用，但需署名作者且注明文章出处。</div>
+                <?php $this->need('copyright.php'); ?>
             </div>
             <?php $this->need('comments.php'); ?>
         </div>

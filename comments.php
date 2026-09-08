@@ -36,15 +36,33 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
     ?>">
         <div class="comment-author">
             <?php
-            //评论如果是qq邮箱则显示qq头像
+            // 评论如果是qq邮箱则显示qq头像
             $email = $comments->mail;
-            if(preg_match('/^[1-9]\d{4,12}@qq\.com$/', $email)){
-                //邮箱地址使用aes128加密传输
-                $avatarKey = file_get_contents("key/avatar.key");
+            $avatarKey = rtrim((string) Helper::options()->qqAvatarKey, "\r\n");
+            $avatarRendered = false;
+
+            if ($avatarKey !== ''
+                && preg_match('/^[1-9]\d{4,12}@qq\.com$/', $email)) {
+                // 邮箱地址使用 AES-128-ECB 加密传输，保持现有头像 API 协议。
                 $data = openssl_encrypt($email, 'aes-128-ecb', $avatarKey, OPENSSL_RAW_DATA);
-                $urlCode = urlencode(base64_encode($data));
-                echo '<img class="avatar" src="//api.ffis.me/imgApi/avatar/qq?avatar='.$urlCode.'" alt=' . $comments->author .' width="40" height="40">';
-            }else{
+
+                if ($data !== false) {
+                    $urlCode = rawurlencode(base64_encode($data));
+                    $avatarUrl = materialQqAvatarEndpoint() . '?avatar=' . $urlCode;
+                    $author = htmlspecialchars(
+                        (string) $comments->author,
+                        ENT_QUOTES | ENT_SUBSTITUTE,
+                        'UTF-8'
+                    );
+                    $avatarUrl = htmlspecialchars($avatarUrl, ENT_QUOTES, 'UTF-8');
+
+                    echo '<img class="avatar" loading="lazy" decoding="async" src="' . $avatarUrl
+                        . '" alt="' . $author . '" width="40" height="40">';
+                    $avatarRendered = true;
+                }
+            }
+
+            if (!$avatarRendered) {
                 $comments->gravatar('40', '');
             }
             ?>
@@ -163,7 +181,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 		    		<div class="col-sm-offset-1 col-sm-5">
                         <div id="captcha">
                         </div>
-                        <?php Geetest_Plugin::commentCaptchaRender(); ?>
+                        <?php if (\Typecho\Plugin::exists('Geetest') && class_exists('Geetest_Plugin')): ?>
+                            <?php Geetest_Plugin::commentCaptchaRender(); ?>
+                        <?php endif; ?>
 		    			<button id="sub_btn" type="submit" class="btn btn-success btn-raised submit">提交评论</button>　
 		    		</div>
 		    	</div>

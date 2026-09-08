@@ -10,41 +10,29 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <html lang="zh-CN" class="space">
 <head profile="http://gmpg.org/xfn/11">
     <meta http-equiv="content-type" content="text/html; charset=<?php $this->options->charset(); ?>" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php $this->archiveTitle(array(
             'category' => _t('分类 %s 下的文章'),
             'search' => _t('包含关键字 %s 的文章'),
             'tag' => _t('标签 %s 下的文章'),
             'author' => _t('%s 发布的文章')
         ), '', ' - '); ?><?php $this->options->title(); ?></title>
-<?php if($this->is('index')): ?>
-    <link rel="dns-prefetch" href="https://api.ffis.me" />
-    <link rel="dns-prefetch" href="https://static.ffis.me" />
-    <link rel="dns-prefetch" href="https://static.noisky.cn" />
-    <link rel="dns-prefetch" href="https://v1.hitokoto.cn" />
-    <link rel="dns-prefetch" href="https://hm.baidu.com" />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-<?php endif;?>
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php $this->options->siteIcon() ?>"/>
-    <link rel="Shortcut Icon" href="<?php $this->options->siteIcon() ?>"/>
-    <link rel="Bootmark" href="<?php $this->options->siteIcon() ?>"/>
-    <!--加载CDN资源-->
-   <link rel="stylesheet" href="https://static.ffis.me/stylesheet/bootstrap.min.css?v20200413"/>
-   <link rel="stylesheet" href="https://static.ffis.me/stylesheet/material.min.css?v=2019123001"/>
-   <link rel="stylesheet" href="https://static.ffis.me/stylesheet/customs.min.css?v=2026072601"/>
-   <link rel="stylesheet" href="https://static.ffis.me/stylesheet/customs-blue.min.css?v=2020120601"/>
-    <!--加载本地资源-->
-<!--   <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/customs.css'); ?><!--">-->
-<!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/material.min.css'); ?><!--">-->
-<!--    <link rel="stylesheet" href="--><?php //$this->options->themeUrl('css/customs-white.css'); ?><!--">-->
-    <!--[if lt IE 9]>
-    <script src="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/js/html5shiv.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/noisky/typecho_material_theme@master/js/respond.js"></script>
-    <![endif]-->
-    <?php $this->header(); ?>
+<?php foreach (materialDnsPrefetchOrigins($this) as $origin): ?>
+    <link rel="dns-prefetch" href="<?php echo htmlspecialchars($origin, ENT_QUOTES, 'UTF-8'); ?>" />
+<?php endforeach; ?>
+<?php $siteIcon = materialSafeUrl($this->options->siteIcon, array('http', 'https'), true, false); ?>
+<?php if ($siteIcon !== ''): ?>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo htmlspecialchars($siteIcon, ENT_QUOTES, 'UTF-8'); ?>"/>
+    <link rel="Shortcut Icon" href="<?php echo htmlspecialchars($siteIcon, ENT_QUOTES, 'UTF-8'); ?>"/>
+    <link rel="Bootmark" href="<?php echo htmlspecialchars($siteIcon, ENT_QUOTES, 'UTF-8'); ?>"/>
+<?php endif; ?>
+    <!--加载静态资源-->
+   <link rel="stylesheet" href="<?php echo htmlspecialchars(materialAssetUrl('css/bootstrap.min.css'), ENT_QUOTES, 'UTF-8'); ?>"/>
+   <link rel="stylesheet" href="<?php echo htmlspecialchars(materialAssetUrl('css/material.min.css'), ENT_QUOTES, 'UTF-8'); ?>"/>
+   <link rel="stylesheet" href="<?php echo htmlspecialchars(materialAssetUrl('css/customs.min.css'), ENT_QUOTES, 'UTF-8'); ?>"/>
+   <link rel="stylesheet" href="<?php echo htmlspecialchars(materialAssetUrl('css/customs-blue.min.css'), ENT_QUOTES, 'UTF-8'); ?>"/>
+     <?php $this->header(); ?>
 </head>
 <body>
 <header>
@@ -96,12 +84,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 href="<?php $pages->permalink(); ?>"
                                 title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a></li>
                     <?php endwhile; ?></ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <?php if ($this->options->weibolink): ?>
-                        <li><a href="<?php $this->options->weibolink() ?>" rel="nofollow" target="_blank"><img
-                                    class="top_weibo" src="https://static.ffis.me/img/weibo.png">&nbsp;Weibo</a></li>
-                    <?php endif; ?>
-                </ul>
                 <!--END-->
             </div><!-- /.nav-collapse -->
         </div><!-- /.container -->

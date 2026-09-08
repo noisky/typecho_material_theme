@@ -1,49 +1,4 @@
-// 一言异步加载代码
-// (function getHitokoto() {
-//     $.ajax({
-//         // url: "https://api.imjad.cn/hitokoto/?encode=jsc&charset=utf-8&length=50",
-//         url: "https://v1.hitokoto.cn/?encode=json&charset=utf-8",
-//         dataType: "jsonp",
-//         async: true,
-//         jsonp: "callback",
-//         jsonpCallback: "hitokoto",
-//         success: function (result) {
-//             $('#hitokoto').text(result.hitokoto)
-//         },
-//         error: function () {
-//             $('#hitokoto').text("读取数据失败了的说……_(:з」∠)_")
-//         }
-//     });
-// })();
-/* 首屏图片根据星期获取 */
-// 电脑版图片地址
-// var imgUrl = [
-//     'https://static.ffis.me/img/indexImg/Sivir.jpg',
-//     'https://static.ffis.me/img/indexImg/Lux.jpg',
-//     'https://static.ffis.me/img/indexImg/Ashe.jpg',
-//     'https://static.ffis.me/img/indexImg/Ali.jpg'
-// ];
-// 手机版图片地址
-// var imgUrl_Phone = [
-//     'https://static.ffis.me/img/indexImg/phone/Sivir-1.jpg',
-//     'https://static.ffis.me/img/indexImg/phone/Lux-1.jpg',
-//     'https://static.ffis.me/img/indexImg/phone/Ashe-1.jpg',
-//     'https://static.ffis.me/img/indexImg/phone/Ali-1.jpg'
-// ];
-// 获取星期
-// var day = new Date().getDay();
-// 获取图片元素
-// var ele = document.getElementsByClassName("billboard")[0];
-// if (ele) {
-    // 获取屏幕宽度，进行手机端的判断
-//     var clientWidth = document.body.clientWidth;
-//     if (clientWidth < 768) {
-//         ele.style.backgroundImage = 'url(' + imgUrl_Phone[day % 4] + ')';
-//     } else {
-//         ele.style.backgroundImage = 'url(' + imgUrl[day % 4] + ')';
-//     }
-// }
-
+/* 自定义js合并 */
 /* scrollup */
 !function (l, o, e) {
     "use strict";
@@ -104,8 +59,6 @@ $.scrollUp({
     scrollText: "回顶部"
 });
 $('#scrollUp').addClass('btn btn-info btn-fab btn-raised fa fa-angle-up');
-/* 图片懒加载配置 */
-$('img').addClass('lazyload');
 /* 鼠标点击特效 */
 //定义获取词语下标
 var a_idx = 0;
