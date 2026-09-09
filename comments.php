@@ -111,11 +111,19 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 		<h3 id="response">添加新评论</h3>
 		<!-- 输入表单开始 -->
 		    <form method="post" action="<?php $this->commentUrl() ?>" id="comment_form" class="form-horizontal">
+                <input type="hidden" name="geetest_return_anchor" value="comment_form" />
 		        <!-- 如果当前用户已经登录 -->
 		        <?php if($this->user->hasLogin()): ?>
-		            <!-- 显示当前登录用户的用户名以及登出连接 -->
-		            <p>已作为管理员<a href="<?php $this->options->adminUrl(); ?>"><?php $this->user->screenName(); ?></a>登录
-		            <a href="<?php $this->options->logoutUrl(); ?>" title="Logout">点击注销 &raquo;</a></p>
+
+		            <style>
+
+		            </style>
+		            <div class="comment-user-status" role="status">
+		                <span class="comment-user-status__icon fa fa-user-circle-o fa-fw" aria-hidden="true"></span>
+		                <span>已登录为管理员</span>
+		                <a class="comment-user-status__name" href="<?php $this->options->adminUrl(); ?>"><?php $this->user->screenName(); ?></a>
+		                <a class="comment-user-status__logout" href="<?php $this->options->logoutUrl(); ?>" title="Logout">退出登录 <span aria-hidden="true">&raquo;</span></a>
+		            </div>
 
 		        <!-- 若当前用户未登录 -->
 		        <?php else: ?>
@@ -165,11 +173,15 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
                         <?php } ?>
                 </script>
 		        <?php endif; ?>
+		        <?php
+                    $rememberedCommentText = Typecho_Cookie::get('__typecho_remember_text', '');
+                    Typecho_Cookie::delete('__typecho_remember_text');
+		        ?>
 		        <div class="form-group">
 		    		<label for="textarea" class="col-sm-1 control-label required">内容</label>
 		    		<div class="col-sm-11">
 		    			<div class="form-control-wrapper">
-		    				<textarea rows="9" cols="50" name="text" id="textarea" class="form-control textarea  empty" required="required" placeholder="允许使用的 HTML 标签 <a> <img> <blockquote> <pre>"></textarea>
+                <textarea rows="9" cols="50" name="text" id="textarea" class="form-control textarea  empty" required="required" placeholder="允许使用的 HTML 标签 <a> <img> <blockquote> <pre>"><?php echo htmlspecialchars($rememberedCommentText, ENT_QUOTES, 'UTF-8'); ?></textarea>
 		    				<span class="material-input"></span>
 		    			</div>
 		    		</div>

@@ -1205,6 +1205,43 @@ a.no-underline {
 a.no-underline:hover:after {
     width: 0 !important
 }
+.comment-user-status {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    margin: 0 0 20px;
+    padding: 10px 14px;
+    border-left: 3px solid #2196f3;
+    border-radius: 2px;
+    background-color: rgba(33, 150, 243, .08);
+    color: #6f6f6f;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.comment-user-status__icon {
+    color: #2196f3;
+    font-size: 16px;
+}
+.comment-user-status__name {
+    color: #2196f3;
+    font-weight: 500;
+}
+.comment-user-status__logout {
+    margin-left: auto;
+    color: #6f6f6f;
+    font-size: 13px;
+    white-space: nowrap;
+}
+.comment-user-status__logout:hover,
+.comment-user-status__logout:focus {
+    color: #2196f3;
+}
+@media (max-width: 480px) {
+    .comment-user-status__logout {
+        margin-left: 0;
+    }
+}
 @media (min-width: 1200px) {
     .container{
         width: 1200px;
