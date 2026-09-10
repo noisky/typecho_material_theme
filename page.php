@@ -15,7 +15,7 @@ $this->need('header.php'); ?>
                 <div class="panel-body">
                     <h3 class="post-title"><a href="<?php $this->permalink() ?>" target="_blank"><?php $this->title() ?></a></h3>
                     <div class="post-content">
-                        <?php $this->content(); ?>
+                        <?php echo materialAddLazyLoading($this->content, $this, null); ?>
                     </div>
                 </div>
                 <?php $this->need('copyright.php'); ?>
@@ -26,5 +26,4 @@ $this->need('header.php'); ?>
 	</div>
 </div>
     <?php $this->need('footer.php'); ?>
-
 

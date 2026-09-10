@@ -5,8 +5,8 @@
  *
  * @package Material Theme
  * @author 饭饭
- * @version 3.0.1
- * @link http://ffis.me
+ * @version 3.0.2
+ * @link https://github.com/noisky/typecho_material_theme
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $this->need('header.php');
@@ -63,4 +63,3 @@ $billboardImage = materialSafeUrl($this->options->billboardImage, array('http', 
     <script src="<?php echo htmlspecialchars(materialHitokotoUrl(), ENT_QUOTES, 'UTF-8'); ?>" defer></script>
 <?php endif; ?>
 <?php $this->need('footer.php'); ?>
-

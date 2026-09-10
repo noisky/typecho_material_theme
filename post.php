@@ -27,7 +27,7 @@ $this->need('header.php'); ?>
                         <span>/&nbsp;&nbsp;时间：<?php $this->date('Y-m-d H:i'); ?></span>
                     </div>
                     <div class="post-content">
-                        <?php $this->content(); ?>
+                        <?php echo materialAddLazyLoading($this->content, $this, null); ?>
                     </div>
 					<br>
                     <div class="arctags arctags-left">

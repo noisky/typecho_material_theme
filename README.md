@@ -147,7 +147,7 @@ Geetest 客户端脚本由 Geetest 插件按配置按需加载，Material 主题
 
 ### 图片懒加载
 
-主题模板中的图片直接使用 `loading="lazy"` 和 `decoding="async"`。文章正文、摘要和评论内容中的图片通过 Typecho 的 `contentEx`、`excerptEx` 过滤器补充这些属性；图片会保留真实的 `src`，不会在页脚进行整页缓冲或正则替换。
+主题模板中的图片直接使用 `loading="lazy"` 和 `decoding="async"`。文章正文、摘要和评论内容中的图片通过 Typecho 的 `contentEx`、`excerptEx` 过滤器补充这些属性；文章详情和独立页面模板在最终输出正文时还会再次调用 `materialAddLazyLoading()`，兼容 Typecho 提前缓存 `$this->content` 的情况。图片会保留真实的 `src`，不会在页脚进行整页缓冲或正则替换。
 
 `customs.css` 会在图片尚未完成加载时为 `img[loading="lazy"]` 设置 `loading.svg` 背景。`MyCustom.js` 会监听图片的 `load` 和 `error` 事件，并处理脚本执行前已经从缓存加载完成的图片；完成后追加 `material-lazy-loaded`，由对应 CSS 规则清除背景色和背景图。因此透明 PNG（例如 Smilies 表情）加载完成后也不会继续透出 loading 图标。
 
@@ -232,6 +232,11 @@ https://cdn.example.com/typecho-material/fonts/fontawesome-webfont.woff2
 ## 版本发布记录
 
 当前主题没有独立的版本 Tag，以下记录按照仓库实际维护日期整理。正式发布时可以据此创建版本 Tag。
+
+### 2026-09-11 v3.0.2
+
+- 修复文章详情和独立页面正文图片因 Typecho 提前缓存内容而未添加懒加载属性的问题；
+- 在详情模板最终输出正文时补充 `loading="lazy"` 和 `decoding="async"` 属性处理，确保正文图片与首页行为一致。
 
 ### 2026-09-10 v3.0.1
 
