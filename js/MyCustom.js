@@ -59,6 +59,44 @@ $.scrollUp({
     scrollText: "回顶部"
 });
 $('#scrollUp').addClass('btn btn-info btn-fab btn-raised fa fa-angle-up');
+
+/* 原生懒加载图片：加载完成或失败后移除占位背景。 */
+(function () {
+    function markLazyImageFinished(image) {
+        if (image.classList) {
+            image.classList.add('material-lazy-loaded');
+        } else if (!/(^|\s)material-lazy-loaded(?:\s|$)/.test(image.className)) {
+            image.className += ' material-lazy-loaded';
+        }
+    }
+
+    function initLazyImageState() {
+        var images = document.querySelectorAll('img[loading="lazy"]');
+
+        for (var i = 0; i < images.length; i++) {
+            (function (image) {
+                image.addEventListener('load', function () {
+                    markLazyImageFinished(image);
+                }, false);
+                image.addEventListener('error', function () {
+                    markLazyImageFinished(image);
+                }, false);
+
+                // 图片可能在脚本执行前已经从缓存加载完成。
+                if (image.complete) {
+                    markLazyImageFinished(image);
+                }
+            }(images[i]));
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLazyImageState, false);
+    } else {
+        initLazyImageState();
+    }
+}());
+
 /* 鼠标点击特效 */
 //定义获取词语下标
 var a_idx = 0;

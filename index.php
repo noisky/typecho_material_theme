@@ -5,7 +5,7 @@
  *
  * @package Material Theme
  * @author 饭饭
- * @version 3.0.0
+ * @version 3.0.1
  * @link http://ffis.me
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;

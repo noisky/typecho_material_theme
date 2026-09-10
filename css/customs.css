@@ -241,6 +241,12 @@ img[loading="lazy"] {
     background-size: 32px 32px;
 }
 
+/* 图片加载完成后移除占位背景；透明图片也不会继续透出 loading 图标。 */
+img[loading="lazy"].material-lazy-loaded {
+    background-color: transparent;
+    background-image: none;
+}
+
 /* 文章内容图片阴影 */
 .post-content img:not(.smilies,.meta-bak) {
     display: block;

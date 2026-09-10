@@ -139,7 +139,7 @@ js/MyCustom.min.js
 - Highlight.js 代码高亮；
 - 文本自动间距、打字特效和其他主题交互模块。
 
-`MyCustom.min.js` 包含返回顶部、文章目录初始化和其他主题交互代码。图片使用浏览器原生的 `loading="lazy"` 懒加载，不再依赖 LazySizes。
+`MyCustom.min.js` 包含返回顶部、文章目录初始化和其他主题交互代码。图片使用浏览器原生的 `loading="lazy"` 懒加载，不再依赖 LazySizes；图片加载完成或失败后，脚本会追加 `material-lazy-loaded` 状态类，配合 CSS 移除占位背景。
 
 Geetest 客户端脚本由 Geetest 插件按配置按需加载，Material 主题不重复打包或加载 Geetest SDK。
 
@@ -148,6 +148,8 @@ Geetest 客户端脚本由 Geetest 插件按配置按需加载，Material 主题
 ### 图片懒加载
 
 主题模板中的图片直接使用 `loading="lazy"` 和 `decoding="async"`。文章正文、摘要和评论内容中的图片通过 Typecho 的 `contentEx`、`excerptEx` 过滤器补充这些属性；图片会保留真实的 `src`，不会在页脚进行整页缓冲或正则替换。
+
+`customs.css` 会在图片尚未完成加载时为 `img[loading="lazy"]` 设置 `loading.svg` 背景。`MyCustom.js` 会监听图片的 `load` 和 `error` 事件，并处理脚本执行前已经从缓存加载完成的图片；完成后追加 `material-lazy-loaded`，由对应 CSS 规则清除背景色和背景图。因此透明 PNG（例如 Smilies 表情）加载完成后也不会继续透出 loading 图标。
 
 首屏关键图片不建议使用懒加载。CSS `background-image` 背景图不支持 `loading` 属性，仍按 CSS 规则加载。
 
@@ -231,17 +233,33 @@ https://cdn.example.com/typecho-material/fonts/fontawesome-webfont.woff2
 
 当前主题没有独立的版本 Tag，以下记录按照仓库实际维护日期整理。正式发布时可以据此创建版本 Tag。
 
+### 2026-09-10 v3.0.1
+
+- 修复懒加载图片完成后仍显示 `loading.svg` 背景的问题；
+- 新增 `material-lazy-loaded` 完成状态类，兼容缓存命中、加载成功和加载失败场景；
+- 新增 `tools/minify-js.js` 和 `minify-js` npm 脚本，用于安全压缩单个 JavaScript 文件；
+- 同步更新主题自定义 JavaScript 和 CSS 的压缩资源。
+
 ### 2026-09-08 v3.0.0
 
-- 重构主题静态资源加载，新增 `materialAssetUrl()` 和资源版本清单，统一支持本地资源与可配置 CDN；
-- 将头部、页脚和侧栏中的主题静态资源统一接入资源路由，并按页面实际使用情况生成 DNS 预解析；
-- 将图片懒加载迁移到浏览器原生 `loading="lazy"` 和 `decoding="async"`，通过 Typecho 内容过滤器处理文章、摘要和评论图片，移除整页输出缓冲、图片正则替换、LazySizes 及 `data-src` 依赖；
-- 统一 Bootstrap 3.3.7 的 CSS、JavaScript 和 Glyphicons 资源，使用 `bootstrap.min.css` 作为唯一 Bootstrap 样式入口，并补齐字体文件和 CSS Source Map；
-- 清理未使用的 CSS、JavaScript、图片、字体、旧 CI 配置及 IE8 兼容代码，移除页脚旧又拍云资源引用；
-- 新增并完善首页背景图、CDN、QQ 头像、微主页和备案信息等主题配置，微主页默认关闭；
-- 抽离 `copyright.php` 公共版权模板，供文章页和独立页面复用；
-- 增强 Smilies、Geetest 等可选插件的调用兼容性，避免插件缺失时影响评论页面；
-- 更新静态资源路径、缓存版本、本地图片和字体引用、主题截图及使用文档。
+- 移除页脚对整页 HTML 的输出缓冲和图片正则替换；
+- 改用浏览器原生 `loading="lazy"` 和 `decoding="async"` 图片懒加载；
+- 通过 Typecho `contentEx` 和 `excerptEx` 过滤器处理文章、摘要和评论内容中的图片；
+- 移除主题对 LazySizes 和 `data-src` 的依赖。
+- 根据实际功能 URL 动态生成 DNS 预解析，移除无实际依赖的固定第三方域名。
+- 移除 IE8 及更早版本专用的 `html5shiv.js`、`respond.js` 和 `X-UA-Compatible` 配置。
+- 新增 `materialAssetUrl()` 资源 URL 生成机制，默认使用本地资源，也支持通过主题配置切换到 CDN；
+- 将头部、页脚、侧栏中的主题静态资源统一接入本地/CDN 资源路由；
+- 将 CDN 的 DNS 预解析扩展到所有页面，并保留首页专属外部服务的预解析；
+- 整理并删除未使用的 CSS、JavaScript、图片和字体资源；
+- 统一 Bootstrap 3.3.7 的 CSS、JavaScript 和 Glyphicons 字体资源；
+- 将 Bootstrap 样式文件统一为 `bootstrap.min.css`；
+- 补齐 Bootstrap 字体文件和主题合并资源所需的 Source Map；
+- 更新主题静态资源路径、缓存版本和本地图片/字体引用，减少对旧外部 CDN 的依赖；
+- 修复 Material 主题评论表情插件的输出兼容性；
+- 更新评论模板中的插件调用命名空间；
+- 移除页脚中的旧又拍云资源引用并整理页脚显示；
+- 更新主题 README、资源说明和推荐插件说明。
 
 ### 2026-07-26
 
