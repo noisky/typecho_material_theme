@@ -7,6 +7,18 @@ body {
     font-size: 14px;
 }
 
+html {
+    color-scheme: light dark;
+}
+
+html[data-theme="light"] {
+    color-scheme: light;
+}
+
+html[data-theme="dark"] {
+    color-scheme: dark;
+}
+
 /* 鼠标点击后的焦点不显示默认黑框，键盘导航仍保留焦点提示。 */
 *:focus:not(:focus-visible) {
     outline: none !important;
@@ -52,6 +64,103 @@ ul.nav.navbar-nav {
 
 .navbar-nav > li > a:focus {
     outline: none;
+}
+
+.material-navbar-container {
+    position: relative;
+}
+
+.material-theme-control {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+}
+
+.material-theme-toggle {
+    display: inline-flex;
+    width: 46px;
+    min-width: 46px;
+    height: 46px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 0;
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    transition: background-color .2s ease, color .2s ease;
+}
+
+.material-theme-toggle:hover {
+    background-color: rgba(255, 255, 255, .18);
+    color: #fff;
+}
+
+.material-theme-icon {
+    display: none;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    overflow: visible;
+}
+
+.material-theme-toggle[data-theme-mode="system"] .material-theme-icon-system,
+.material-theme-toggle[data-theme-mode="light"] .material-theme-icon-light,
+.material-theme-toggle[data-theme-mode="dark"] .material-theme-icon-dark {
+    display: block;
+}
+
+.material-theme-toggle[data-theme-mode="system"] .material-theme-icon,
+.material-theme-toggle[data-theme-mode="light"] .material-theme-icon,
+.material-theme-toggle[data-theme-mode="dark"] .material-theme-icon {
+    color: #fff;
+}
+
+.material-theme-toggle:focus {
+    outline: none;
+}
+
+.material-theme-toggle:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, .95);
+    outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+    .navbar-collapse {
+        padding-right: 104px;
+    }
+}
+
+@media (max-width: 767px) {
+    .material-theme-control {
+        right: 54px;
+    }
+
+    .material-theme-toggle {
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+        padding: 0;
+        border-radius: 50%;
+    }
+
+    .material-theme-icon {
+        width: 23px;
+        height: 23px;
+        flex-basis: 23px;
+    }
 }
 
 .billboard {
@@ -1020,17 +1129,29 @@ h3#response {
 }
 
 @media (prefers-color-scheme: dark) {
-    .article-toc-card .index-box .index-subItem-box {
+    html:not([data-theme]) .article-toc-card .index-box .index-subItem-box {
         border-left: 0;
     }
 
-    .article-toc-card .index-box .index-subItem-box > .index-item {
+    html:not([data-theme]) .article-toc-card .index-box .index-subItem-box > .index-item {
         border-left-color: rgba(255, 255, 255, .18);
     }
 
-    .article-toc-card .index-box::-webkit-scrollbar-thumb {
+    html:not([data-theme]) .article-toc-card .index-box::-webkit-scrollbar-thumb {
         background-color: rgba(255, 255, 255, .22);
     }
+}
+
+html[data-theme="dark"] .article-toc-card .index-box .index-subItem-box {
+    border-left: 0;
+}
+
+html[data-theme="dark"] .article-toc-card .index-box .index-subItem-box > .index-item {
+    border-left-color: rgba(255, 255, 255, .18);
+}
+
+html[data-theme="dark"] .article-toc-card .index-box::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, .22);
 }
 
 /* 文章详情页目录使用与其他侧栏一致的卡片头部。 */

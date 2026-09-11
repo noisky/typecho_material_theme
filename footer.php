@@ -41,7 +41,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <script src="<?php echo htmlspecialchars(materialAssetUrl('js/jquery-2.2.4.min.js'), ENT_QUOTES, 'UTF-8'); ?>"></script>
 <script src="<?php echo htmlspecialchars(materialAssetUrl('js/bootstrap.min.js'), ENT_QUOTES, 'UTF-8'); ?>"></script>
 <script src="<?php echo htmlspecialchars(materialAssetUrl('js/merge.min.js'), ENT_QUOTES, 'UTF-8'); ?>"></script>
-<script src="<?php echo htmlspecialchars(materialAssetUrl('js/MyCustom.min.js'), ENT_QUOTES, 'UTF-8'); ?>"></script>
+<script src="<?php echo htmlspecialchars(materialAssetUrl('js/custom.min.js'), ENT_QUOTES, 'UTF-8'); ?>"></script>
 <!-- 统计代码：保持原样输出 -->
 <?php $this->options->statiStics(); ?>
 </body>

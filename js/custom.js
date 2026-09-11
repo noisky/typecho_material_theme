@@ -1,0 +1,315 @@
+/* 自定义js合并 */
+/* scrollup */
+!function (l, o, e) {
+    "use strict";
+    l.fn.scrollUp = function (o) {
+        l.data(e.body, "scrollUp") || (l.data(e.body, "scrollUp", !0), l.fn.scrollUp.init(o))
+    }, l.fn.scrollUp.init = function (r) {
+        var s, t, c, i, n, a, d, p = l.fn.scrollUp.settings = l.extend({}, l.fn.scrollUp.defaults, r), f = !1;
+        switch (d = p.scrollTrigger ? l(p.scrollTrigger) : l("<a/>", {
+            id: p.scrollName,
+            href: "#top"
+        }), p.scrollTitle && d.attr("title", p.scrollTitle), d.appendTo("body"), p.scrollImg || p.scrollTrigger || d.html(p.scrollText), d.css({
+            display: "none",
+            position: "fixed",
+            zIndex: p.zIndex
+        }), p.activeOverlay && l("<div/>", {id: p.scrollName + "-active"}).css({
+            position: "absolute",
+            top: p.scrollDistance + "px",
+            width: "100%",
+            borderTop: "1px dotted" + p.activeOverlay,
+            zIndex: p.zIndex
+        }).appendTo("body"), p.animation) {
+            case"fade":
+                s = "fadeIn", t = "fadeOut", c = p.animationSpeed;
+                break;
+            case"slide":
+                s = "slideDown", t = "slideUp", c = p.animationSpeed;
+                break;
+            default:
+                s = "show", t = "hide", c = 0
+        }
+        i = "top" === p.scrollFrom ? p.scrollDistance : l(e).height() - l(o).height() - p.scrollDistance, n = l(o).scroll(function () {
+            l(o).scrollTop() > i ? f || (d[s](c), f = !0) : f && (d[t](c), f = !1)
+        }), p.scrollTarget ? "number" == typeof p.scrollTarget ? a = p.scrollTarget : "string" == typeof p.scrollTarget && (a = Math.floor(l(p.scrollTarget).offset().top)) : a = 0, d.click(function (o) {
+            o.preventDefault(), l("html, body").animate({scrollTop: a}, p.scrollSpeed, p.easingType)
+        })
+    }, l.fn.scrollUp.defaults = {
+        scrollName: "scrollUp",
+        scrollDistance: 300,
+        scrollFrom: "top",
+        scrollSpeed: 300,
+        easingType: "linear",
+        animation: "fade",
+        animationSpeed: 200,
+        scrollTrigger: !1,
+        scrollTarget: !1,
+        scrollText: "Scroll to top",
+        scrollTitle: !1,
+        scrollImg: !1,
+        activeOverlay: !1,
+        zIndex: 2147483647
+    }, l.fn.scrollUp.destroy = function (r) {
+        l.removeData(e.body, "scrollUp"), l("#" + l.fn.scrollUp.settings.scrollName).remove(), l("#" + l.fn.scrollUp.settings.scrollName + "-active").remove(), l.fn.jquery.split(".")[1] >= 7 ? l(o).off("scroll", r) : l(o).unbind("scroll", r)
+    }, l.scrollUp = l.fn.scrollUp
+}(jQuery, window, document);
+$.material.init();
+$.scrollUp({
+    scrollImg: true,
+    scrollText: "回顶部"
+});
+$('#scrollUp').addClass('btn btn-info btn-fab btn-raised fa fa-angle-up');
+
+/* 原生懒加载图片：加载完成或失败后移除占位背景。 */
+(function () {
+    function markLazyImageFinished(image) {
+        if (image.classList) {
+            image.classList.add('material-lazy-loaded');
+        } else if (!/(^|\s)material-lazy-loaded(?:\s|$)/.test(image.className)) {
+            image.className += ' material-lazy-loaded';
+        }
+    }
+
+    function initLazyImageState() {
+        var images = document.querySelectorAll('img[loading="lazy"]');
+
+        for (var i = 0; i < images.length; i++) {
+            (function (image) {
+                image.addEventListener('load', function () {
+                    markLazyImageFinished(image);
+                }, false);
+                image.addEventListener('error', function () {
+                    markLazyImageFinished(image);
+                }, false);
+
+                // 图片可能在脚本执行前已经从缓存加载完成。
+                if (image.complete) {
+                    markLazyImageFinished(image);
+                }
+            }(images[i]));
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLazyImageState, false);
+    } else {
+        initLazyImageState();
+    }
+}());
+
+/* 鼠标点击特效 */
+//定义获取词语下标
+var a_idx = 0;
+jQuery(document).ready(function($) {
+    //点击body时触发事件
+    $("body").click(function(e) {
+        //需要显示的词语
+        var a = new Array("富强","民主", "文明", "和谐","自由", "平等", "公正","法治", "爱国", "敬业","诚信", "友善");
+        //设置词语给span标签
+        var $i = $("<span/>").text(a[a_idx]);
+        //下标等于原来下标+1  余 词语总数
+        a_idx = (a_idx + 1)% a.length;
+        //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+        //获取x和y的指针坐标
+        var x = e.pageX, y = e.pageY;
+        //在鼠标的指针的位置给$i定义的span标签添加css样式
+        $i.css({"z-index" : 999999999999999999999999999999999999999999999999999999999999999999999,
+            "top" : y - 20,
+            "left" : x,
+            "position" : "absolute",
+            "font-weight" : "bold",
+            "color" : "#ff6651"
+        });
+        //在body添加这个标签
+        $("body").append($i);
+        //animate() 方法执行 CSS 属性集的自定义动画。
+        //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+        //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+        $i.animate({
+            //将原来的位置向上移动180
+            "top" : y - 180,
+            "opacity" : 0
+            //1500动画的速度
+        }, 1500, function() {
+            //时间到了自动删除
+            $i.remove();
+        });
+    });
+});
+/* 文章详情页目录：由 CSS 负责响应式显示，由此处负责生成和交互。 */
+(function ($, window, document) {
+    'use strict';
+
+    function initArticleToc() {
+        var $card = $('.article-toc-card');
+        var $article = $('.post-content');
+        var $toc = $card.find('.index-box');
+        var $toggle = $card.find('.index-box-title');
+
+        if (!$card.length || !$article.length || !$toc.length) {
+            return;
+        }
+
+        if (typeof $.fn.headIndex !== 'function') {
+            $card.hide();
+            return;
+        }
+
+        if ($toc.data('article-toc-ready')) {
+            return;
+        }
+
+        $(document).headIndex({
+            articleWrapSelector: '.post-content',
+            indexBoxSelector: '.article-toc-card .index-box',
+            scrollSelector: 'body,html',
+            scrollWrap: window,
+            offset: 80
+        });
+
+        $toc.data('article-toc-ready', true);
+
+        $toggle.on('click.articleToc', function () {
+            $toc.stop(true, true).slideToggle(200, function () {
+                $toggle.attr('aria-expanded', $toc.is(':visible') ? 'true' : 'false');
+            });
+        });
+
+        if (!$card.find('.index-item').length) {
+            $card.hide();
+        }
+    }
+
+    $(initArticleToc);
+}(jQuery, window, document));
+
+/* 主题色切换：默认跟随系统，手动选择后保存在当前浏览器。 */
+(function (window, document) {
+    'use strict';
+
+    var storageKey = 'material-theme';
+    var preferences = ['system', 'light', 'dark'];
+    var root = document.documentElement;
+    var control = document.getElementById('material-theme-control');
+    var toggle;
+    var systemQuery = window.matchMedia
+        ? window.matchMedia('(prefers-color-scheme: dark)')
+        : null;
+    var labels = {
+        system: '跟随系统',
+        light: '浅色模式',
+        dark: '深色模式'
+    };
+    var shortLabels = {
+        system: '自动',
+        light: '浅色',
+        dark: '深色'
+    };
+    if (!control || control.getAttribute('data-theme-ready') === 'true') {
+        return;
+    }
+
+    toggle = document.getElementById('material-theme-toggle');
+
+    if (!toggle) {
+        return;
+    }
+
+    control.setAttribute('data-theme-ready', 'true');
+
+    function readPreference() {
+        var value;
+
+        try {
+            value = window.localStorage.getItem(storageKey);
+        } catch (error) {
+            value = null;
+        }
+
+        return value === 'light' || value === 'dark' ? value : 'system';
+    }
+
+    function savePreference(preference) {
+        try {
+            if (preference === 'light' || preference === 'dark') {
+                window.localStorage.setItem(storageKey, preference);
+            } else {
+                window.localStorage.removeItem(storageKey);
+            }
+        } catch (error) {
+            // localStorage 不可用时仅在当前页面应用主题。
+        }
+    }
+
+    function resolveTheme(preference) {
+        if (preference === 'dark' || preference === 'light') {
+            return preference;
+        }
+
+        return systemQuery && systemQuery.matches ? 'dark' : 'light';
+    }
+
+    function updateControl(preference) {
+        var effectiveTheme = resolveTheme(preference);
+        var label = toggle.querySelector('.material-theme-label');
+
+        if (label) {
+            label.textContent = shortLabels[preference];
+        }
+
+        toggle.setAttribute('data-theme-mode', preference);
+        toggle.setAttribute(
+            'aria-label',
+            '主题模式：' + labels[preference] + '，当前显示' + labels[effectiveTheme] + '，点击切换'
+        );
+        toggle.setAttribute('title', '主题：' + labels[preference] + '，点击切换');
+    }
+
+    function applyTheme(preference, persist) {
+        if (preference === 'light' || preference === 'dark') {
+            root.setAttribute('data-theme', preference);
+        } else {
+            root.removeAttribute('data-theme');
+            preference = 'system';
+        }
+
+        if (persist) {
+            savePreference(preference);
+        }
+
+        updateControl(preference);
+    }
+
+    function nextPreference(preference) {
+        var index = preferences.indexOf(preference);
+
+        return preferences[(index + 1) % preferences.length];
+    }
+
+    function handleSystemChange() {
+        if (readPreference() === 'system') {
+            updateControl('system');
+        }
+    }
+
+    applyTheme(readPreference(), false);
+
+    toggle.addEventListener('click', function (event) {
+        event.preventDefault();
+        applyTheme(nextPreference(readPreference()), true);
+    }, false);
+
+    if (systemQuery) {
+        if (typeof systemQuery.addEventListener === 'function') {
+            systemQuery.addEventListener('change', handleSystemChange, false);
+        } else if (typeof systemQuery.addListener === 'function') {
+            systemQuery.addListener(handleSystemChange);
+        }
+    }
+
+    window.addEventListener('storage', function (event) {
+        if (event.key === storageKey || event.key === null) {
+            applyTheme(readPreference(), false);
+        }
+    }, false);
+}(window, document));

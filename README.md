@@ -11,6 +11,7 @@
 - 移动端导航折叠和分类下拉菜单；
 - 侧栏搜索、微主页和常用面板；
 - 文章详情页自动生成右侧目录，支持层级缩进、当前章节高亮和吸顶；
+- 支持跟随系统、浅色和深色三种主题模式，并可保存手动选择；
 - 代码高亮；
 - 全站使用原生的图片懒加载；
 - 返回顶部；
@@ -86,6 +87,12 @@ img/billboard.jpg
 
 桌面端目录卡片使用 `position: sticky`，顶部偏移为 80px；目录较长时只在卡片内部滚动。`992px` 以下通过 CSS 隐藏目录卡片，不依赖 JavaScript 判断屏幕宽度。
 
+### 明暗主题
+
+主题默认跟随系统的 `prefers-color-scheme`。顶部导航栏提供单按钮三态切换，桌面端位于导航栏最右侧，移动端始终显示在折叠按钮左侧。按钮采用圆形 SVG 图标样式，默认保持简洁，悬停或键盘聚焦时显示圆形背景反馈；点击会依次切换“跟随系统、浅色模式、深色模式”，当前模式可通过图标和悬停提示识别，手动选择会保存到浏览器的 `localStorage`，刷新页面后仍然生效。
+
+主题状态通过 `html[data-theme="light"]` 和 `html[data-theme="dark"]` 控制；选择跟随系统时移除 `data-theme`。主题偏好会在样式表加载前初始化，避免刷新时出现短暂的浅色闪烁。
+
 ## 推荐搭配插件
 
 以下插件提供了针对 Material 主题的专属适配版本，建议与本主题搭配使用：
@@ -141,7 +148,7 @@ css/customs-blue.min.css
 js/jquery-2.2.4.min.js
 js/bootstrap.min.js
 js/merge.min.js
-js/MyCustom.min.js
+js/custom.min.js
 ```
 
 本主题面向现代浏览器设计，当前版本不再包含 IE8 及更早版本的专用兼容脚本。
@@ -158,7 +165,7 @@ js/MyCustom.min.js
 
 `jquery.headindex.js` 是文章目录的维护源文件，但运行时由 `merge.min.js` 提供，不应在模板中单独加载。HeadIndex 负责读取文章标题、生成目录树、更新当前章节和处理目录点击跳转；目录跳转会避开固定导航栏的 80px 高度。
 
-`MyCustom.min.js` 负责文章详情页目录的初始化、折叠交互、空目录处理和无重复初始化保护，同时包含返回顶部及其他主题自定义行为。图片使用浏览器原生的 `loading="lazy"` 懒加载，不再依赖 LazySizes；图片加载完成或失败后，脚本会追加 `material-lazy-loaded` 状态类，配合 CSS 移除占位背景。
+`custom.min.js` 负责主题色切换、文章详情页目录的初始化、折叠交互、空目录处理和无重复初始化保护，同时包含返回顶部及其他主题自定义行为。图片使用浏览器原生的 `loading="lazy"` 懒加载，不再依赖 LazySizes；图片加载完成或失败后，脚本会追加 `material-lazy-loaded` 状态类，配合 CSS 移除占位背景。
 
 Geetest 客户端脚本由 Geetest 插件按配置按需加载，Material 主题不重复打包或加载 Geetest SDK。
 
@@ -168,7 +175,7 @@ Geetest 客户端脚本由 Geetest 插件按配置按需加载，Material 主题
 
 主题模板中的图片直接使用 `loading="lazy"` 和 `decoding="async"`。文章正文、摘要和评论内容中的图片通过 Typecho 的 `contentEx`、`excerptEx` 过滤器补充这些属性；文章详情和独立页面模板在最终输出正文时还会再次调用 `materialAddLazyLoading()`，兼容 Typecho 提前缓存 `$this->content` 的情况。图片会保留真实的 `src`，不会在页脚进行整页缓冲或正则替换。
 
-`customs.css` 会在图片尚未完成加载时为 `img[loading="lazy"]` 设置 `loading.svg` 背景。`MyCustom.js` 会监听图片的 `load` 和 `error` 事件，并处理脚本执行前已经从缓存加载完成的图片；完成后追加 `material-lazy-loaded`，由对应 CSS 规则清除背景色和背景图。因此透明 PNG（例如 Smilies 表情）加载完成后也不会继续透出 loading 图标。
+`customs.css` 会在图片尚未完成加载时为 `img[loading="lazy"]` 设置 `loading.svg` 背景。`custom.js` 会监听图片的 `load` 和 `error` 事件，并处理脚本执行前已经从缓存加载完成的图片；完成后追加 `material-lazy-loaded`，由对应 CSS 规则清除背景色和背景图。因此透明 PNG（例如 Smilies 表情）加载完成后也不会继续透出 loading 图标。
 
 首屏关键图片不建议使用懒加载。CSS `background-image` 背景图不支持 `loading` 属性，仍按 CSS 规则加载。
 
@@ -196,7 +203,7 @@ typecho-material/
 
 ```text
 https://cdn.example.com/typecho-material/css/customs.min.css
-https://cdn.example.com/typecho-material/js/MyCustom.min.js
+https://cdn.example.com/typecho-material/js/custom.min.js
 https://cdn.example.com/typecho-material/fonts/fontawesome-webfont.woff2
 ```
 
@@ -230,7 +237,7 @@ https://cdn.example.com/typecho-material/fonts/fontawesome-webfont.woff2
 - Bootstrap 负责导航折叠和分类下拉菜单；
 - Material 脚本负责 Material Design 表单、按钮和水波纹交互；
 - `merge.min.js` 负责合并的第三方功能模块；
-- `MyCustom.min.js` 负责主题自定义行为；
+- `custom.min.js` 负责主题自定义行为；
 - 运行时使用 `.min.css` 和 `.min.js` 文件，未压缩文件主要用于维护和重新构建。
 
 ## 维护与二次开发
@@ -253,6 +260,11 @@ https://cdn.example.com/typecho-material/fonts/fontawesome-webfont.woff2
 ## 版本发布记录
 
 当前主题没有独立的版本 Tag，以下记录按照仓库实际维护日期整理。正式发布时可以据此创建版本 Tag。
+
+### 2026-09-12 v3.0.4
+
+- 增加跟随系统、浅色和深色三态主题切换，支持单按钮循环、浏览器持久化和无闪烁初始化；
+- 主题按钮适配桌面端导航栏右侧和移动端折叠按钮旁的位置。
 
 ### 2026-09-11
 
