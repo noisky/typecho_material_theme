@@ -136,20 +136,49 @@ jQuery(document).ready(function($) {
         });
     });
 });
-/* 文章页面目录索引配置 */
-$(function () {
-    $(document).headIndex({
-        articleWrapSelector: '.post-content',//包裹文章的元素的选择器
-        indexBoxSelector: '.index-box',//用来放目录索引的元素的选择器
-        scrollSelector: 'body,html',
-        scrollWrap: window,
-        offset: 0,
-    });
-});
-/* 保持文章目录树标题和目录同步显示和隐藏 */
-$(function () {
-    let indexBoxTitle = $(".index-item").length;
-    if (0 === indexBoxTitle) {
-        $("#index-box-title").css("display", "none");
+/* 文章详情页目录：由 CSS 负责响应式显示，由此处负责生成和交互。 */
+(function ($, window, document) {
+    'use strict';
+
+    function initArticleToc() {
+        var $card = $('.article-toc-card');
+        var $article = $('.post-content');
+        var $toc = $card.find('.index-box');
+        var $toggle = $card.find('.index-box-title');
+
+        if (!$card.length || !$article.length || !$toc.length) {
+            return;
+        }
+
+        if (typeof $.fn.headIndex !== 'function') {
+            $card.hide();
+            return;
+        }
+
+        if ($toc.data('article-toc-ready')) {
+            return;
+        }
+
+        $(document).headIndex({
+            articleWrapSelector: '.post-content',
+            indexBoxSelector: '.article-toc-card .index-box',
+            scrollSelector: 'body,html',
+            scrollWrap: window,
+            offset: 80
+        });
+
+        $toc.data('article-toc-ready', true);
+
+        $toggle.on('click.articleToc', function () {
+            $toc.stop(true, true).slideToggle(200, function () {
+                $toggle.attr('aria-expanded', $toc.is(':visible') ? 'true' : 'false');
+            });
+        });
+
+        if (!$card.find('.index-item').length) {
+            $card.hide();
+        }
     }
-});
+
+    $(initArticleToc);
+}(jQuery, window, document));

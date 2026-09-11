@@ -361,10 +361,10 @@ function materialAssetVersionMap() {
         'js/bootstrap.min.js' => '2026090901',
 
         // 主题维护资源：文件变更时更新对应版本号。
-        'css/customs.min.css' => '2026090901',
+        'css/customs.min.css' => '2026091110',
         'css/customs-blue.min.css' => '2020120601',
-        'js/merge.min.js' => '2026090801',
-        'js/MyCustom.min.js' => '2026090801'
+        'js/merge.min.js' => '2026091102',
+        'js/MyCustom.min.js' => '2026091102'
     );
 
     return $versions;

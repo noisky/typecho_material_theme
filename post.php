@@ -8,15 +8,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $this->need('header.php'); ?>
 
 <div class="container" id="main">
-    <div class="c-a" id="page-tree">
-        <a class="index-box-title" id="index-box-title" onclick="$('.index-box').slideToggle()" href="javascript:;">目录</a>
-            <div class="index-box">
-            </div>
-            <div id="t"></div>
-    </div>
-    <div class="row">
+    <div class="row article-layout">
 
-        <div class="col-md-9">
+        <div class="col-md-9 article-main">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h3 class="post-title"><a href="<?php $this->permalink() ?>" target="_blank"><?php $this->title() ?></a></h3>
@@ -54,40 +48,4 @@ $this->need('header.php'); ?>
       <?php $this->need('sidebar.php'); ?>
     </div>
 </div>
-<script>
-    //动态控制文章目录树的显示位置
-    function displayWindowSize(){
-        //获取滚动高度
-        let scrollTop = document.documentElement.scrollTop;
-        //获取文章离屏幕左边的距离
-        let offsetLeft = document.getElementsByClassName("row")[0].offsetLeft;
-        //获取文章容器宽度
-        let rowWidth = document.getElementsByClassName("col-md-9")[0].getBoundingClientRect().width;
-        if (scrollTop < 1900) {
-            //获取窗口的宽度和高度，不包括滚动条
-            var width = document.body.clientWidth;
-            //当屏幕宽带小于1600时隐藏文章目录树
-            if (width < 1630) {
-                document.getElementById("page-tree").style.display = "none";
-            } else {
-                document.getElementById("page-tree").style.display = "block";
-                document.getElementById("page-tree").style.left = (offsetLeft - 207) + "px";
-                document.getElementById("page-tree").style.width = '200px';
-            }
-        } else {
-            // console.log(offsetLeft);
-            // document.getElementById("page-tree").style.left = (offsetLeft + 923) + "px";
-            //根据文章宽度移动到侧边栏
-            document.getElementById("page-tree").style.left = (offsetLeft + rowWidth + 12) + "px";
-            //目录宽度增加
-            document.getElementById("page-tree").style.width = '265px';
-        }
-    }
-    //事件侦听器添加监听窗口的resize事件和scroll滚动事件
-    ['resize','scroll'].forEach(function(item){
-        window.addEventListener(item, displayWindowSize);
-    })
-    //第一次调用该函数
-    displayWindowSize();
-</script>
 <?php $this->need('footer.php'); ?>

@@ -5,9 +5,21 @@
 * sidebar.php
 */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+// 是否是文章详情页
+$isArticleDetail = method_exists($this, 'is')
+    && $this->is('single')
+    && !$this->is('page');
+// 包含标题的文章，才显示目录
+$articleHasHeadings = false;
+if ($isArticleDetail) {
+    $articleHasHeadings = preg_match(
+        '/<h[1-6]\b[^>]*>/i',
+        (string) $this->content
+    ) === 1;
+}
 ?>
 
-<div class="col-md-3">
+<div class="col-md-3<?php if ($isArticleDetail): ?> article-sidebar<?php endif; ?>">
 	<form method="post" action="" class="panel-body">
 		<div class="input-group">
 			<div class="form-control-wrapper">
@@ -81,11 +93,35 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 	        <h3 class="panel-title">最新文章</h3>
 	    </a>
 	    <div class="recent_posts_box">
+	       <?php if ($isArticleDetail): ?>
+	       <?php $this->widget('Widget_Contents_Post_Recent', 'pageSize=10')
+	        ->parse('<a href="{permalink}" class="item">{title}</a>'); ?>
+	       <?php else: ?>
 	       <?php $this->widget('Widget_Contents_Post_Recent')
 	        ->parse('<a href="{permalink}" class="item">{title}</a>'); ?>
+	       <?php endif; ?>
 	    </div>
 	</div>
 
+	<?php if ($isArticleDetail && $articleHasHeadings): ?>
+	<div class="panel panel-primary article-toc-card" id="page-tree">
+	    <button
+	        type="button"
+	        class="panel-heading index-box-title"
+	        id="index-box-title"
+	        aria-controls="article-toc"
+	        aria-expanded="true">
+	        <span class="panel-title">目录</span>
+	    </button>
+	    <nav
+	        class="index-box"
+	        id="article-toc"
+	        aria-label="文章目录">
+	    </nav>
+	</div>
+	<?php endif; ?>
+
+	<?php if (!$isArticleDetail || !$articleHasHeadings): ?>
 	<?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
 	<div class="panel panel-primary">
 	    <a class="panel-heading" onclick="$('.comments_box').slideToggle()" href="javascript:;">
@@ -141,7 +177,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 	       <a href="<?php $this->options->feedUrl(); ?>" class="item"><?php _e('文章 RSS'); ?></a>
 	       <a href="<?php $this->options->commentsFeedUrl(); ?>" class="item"><?php _e('评论 RSS'); ?></a>
            <a href="https://ffis.me/sponsor/" class="item" target="_blank"><?php _e('赞助 Sponsor'); ?></a>
-	    </div>
+		</div>
 	</div>
+	<?php endif; ?>
 
 </div>

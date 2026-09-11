@@ -7,6 +7,11 @@ body {
     font-size: 14px;
 }
 
+/* 鼠标点击后的焦点不显示默认黑框，键盘导航仍保留焦点提示。 */
+*:focus:not(:focus-visible) {
+    outline: none !important;
+}
+
 p {
     line-height: 26px;
     font-size: 14px;
@@ -856,22 +861,6 @@ h3#response {
     display: none
 }
 
-/*
- * page index.
- */
-.c-a {
-    width: 200px;
-    min-width: 200px;
-    height: max-content;
-    position: fixed;
-    left: 160px;
-    top: 160px;
-    border-radius: 2px;
-    border: 0;
-    box-shadow: 0 1px 6px 0 rgba(0,0,0,.12), 0 1px 6px 0 rgba(0,0,0,.12);
-    background-color: #fff;
-}
-
 /* 文章目录树 */
 .index-box-title {
     width: 100%;
@@ -948,15 +937,32 @@ h3#response {
     background-color: transparent;
     overflow-y: auto;
     overflow-x: hidden;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
 }
 
 .index-box ul {
+    margin: 0;
     padding: 0;
     list-style: none;
 }
 
+.article-toc-card .index-box > ul {
+    box-sizing: border-box;
+    padding-left: 0;
+    border-left: 0;
+}
+
 .index-box .index-subItem-box {
-    display: none;
+    display: block;
+    margin: 0;
+    padding-left: 16px;
+    border-left: 0;
+}
+
+/* 每个非一级目录项单独显示对应层级的竖线。 */
+.index-box .index-subItem-box > .index-item {
+    border-left: 1px solid rgba(0, 0, 0, .18);
 }
 
 .index-box .index-item,
@@ -969,14 +975,16 @@ h3#response {
 }
 
 .index-box .index-link {
-    padding: 4px 8px 4px 12px;
+    padding: 6px 12px;
+    line-height: 1.45;
     cursor: pointer;
     -webkit-transition: background-color 0.3s, border-left-color 0.3s;
     -moz-transition: background-color 0.3s, border-left-color 0.3s;
     -o-transition: background-color 0.3s, border-left-color 0.3s;
     transition: background-color 0.3s, border-left-color 0.3s;
     border-left: 3px solid transparent;
-    word-break: break-all;
+    word-break: normal;
+    overflow-wrap: anywhere;
 }
 
 .index-box .index-item.current > .index-link {
@@ -989,7 +997,117 @@ h3#response {
 }
 
 .index-box .index-subItem-box .index-item {
-    padding-left: 1em;
+    padding-left: 0;
+}
+
+.article-toc-card .index-box .index-item.current > .index-link {
+    font-weight: 500;
+}
+
+.article-toc-card .index-box .index-link:focus-visible {
+    outline: 2px solid rgba(33, 150, 243, .65);
+    outline-offset: -2px;
+    border-radius: 2px;
+}
+
+.article-toc-card .index-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.article-toc-card .index-box::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .18);
+    border-radius: 3px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .article-toc-card .index-box .index-subItem-box {
+        border-left: 0;
+    }
+
+    .article-toc-card .index-box .index-subItem-box > .index-item {
+        border-left-color: rgba(255, 255, 255, .18);
+    }
+
+    .article-toc-card .index-box::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, .22);
+    }
+}
+
+/* 文章详情页目录使用与其他侧栏一致的卡片头部。 */
+.article-toc-card > .index-box-title {
+    display: block;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    text-align: left;
+    font: inherit;
+    font-size: 16px;
+    line-height: 1.1;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.article-toc-card > .index-box-title:focus {
+    color: rgba(255,255,255,.84);
+    text-decoration: none;
+}
+
+@media (min-width: 992px) {
+    .article-layout {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .article-layout:before,
+    .article-layout:after {
+        display: none;
+    }
+
+    .article-layout > .col-md-9,
+    .article-layout > .col-md-3 {
+        float: none;
+    }
+
+    .article-main {
+        flex: 0 0 76%;
+        min-width: 0;
+    }
+
+    .article-sidebar {
+        flex: 0 0 24%;
+        min-width: 0;
+        overflow: visible;
+    }
+
+    .article-toc-card {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 80px;
+        z-index: 4;
+        border-radius: 2px;
+        overflow: hidden;
+    }
+
+    .article-toc-card .index-box {
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 991px) {
+    .article-toc-card {
+        display: none !important;
+    }
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+    scroll-margin-top: 80px;
 }
 
 @media (max-width: 767px) {
@@ -1251,6 +1369,12 @@ a.no-underline:hover:after {
 @media (min-width: 1200px) {
     .container{
         width: 1200px;
+    }
+}
+/* 中宽屏显示优化 */
+@media (min-width: 1600px) {
+    .container{
+        width: 1500px;
     }
 }
 /* 2k分辨率显示优化 */

@@ -2,7 +2,7 @@
 ;(function ($, window) {
     var headIndex = (function () {
         function headIndex(element, options) {
-            this.settings = $.extend(true, $.fn.headIndex.default, options || {});
+            this.settings = $.extend(true, {}, $.fn.headIndex.default, options || {});
             this.element = element;
             this.init();
         }
@@ -103,8 +103,8 @@
             },
 
             current: function (indexItem) {
-                var subBox,
-                    currentClass = 'current';
+                var currentClass = 'current',
+                    activeLink;
 
                 if (indexItem.length === 0 || indexItem.hasClass(currentClass)) {
                     return;
@@ -113,36 +113,48 @@
                 var otherCurrent = this.indexBox.find('li.' + currentClass);
                 if (otherCurrent.length > 0) {
                     otherCurrent.removeClass(currentClass);
+                    otherCurrent.children('.' + this.settings.linkClass).removeAttr('aria-current');
                 }
-                //先清除全部的open标记
-                this.indexBox.find('ul.open').removeClass('open');
 
-                //打开当前下级别的subItemBox
-                subBox = indexItem.children('.' + this.settings.subItemBoxClass);
-                if (subBox.length > 0) {
-                    subBox.addClass('open').slideDown();
-                }
-                //为了应对非常快速滑动的时候，scroll函数略过父级的box
-                var parentsBox = indexItem.parents('ul.' + this.settings.subItemBoxClass);
-                if (parentsBox.length > 0) {
-                    parentsBox.addClass('open').slideDown()
-                }
-                //关闭其他位置打开的subItemBox 排除当前父级上的subItemBox
-                subBox = this.indexBox.find('ul.' + this.settings.subItemBoxClass).not('.open');
-                if (subBox.length > 0) {
-                    subBox.slideUp()
-                }
                 //为当前添加current类
                 indexItem.addClass(currentClass);
+                activeLink = indexItem.children('.' + this.settings.linkClass);
+                activeLink.attr('aria-current', 'location');
+                this.scrollCurrentIntoView(indexItem);
+            },
+
+            scrollCurrentIntoView: function (indexItem) {
+                var indexBox = this.indexBox[0],
+                    item = indexItem[0],
+                    boxRect,
+                    itemRect;
+
+                if (!indexBox || !item || indexBox.clientHeight === 0
+                    || indexBox.scrollHeight <= indexBox.clientHeight) {
+                    return;
+                }
+
+                boxRect = indexBox.getBoundingClientRect();
+                itemRect = item.getBoundingClientRect();
+
+                if (itemRect.top < boxRect.top) {
+                    indexBox.scrollTop -= boxRect.top - itemRect.top;
+                } else if (itemRect.bottom > boxRect.bottom) {
+                    indexBox.scrollTop += itemRect.bottom - boxRect.bottom;
+                }
             },
 
             buildHtml: function (tree) {
                 if (tree === undefined || tree.length === 0) return;
 
                 for (var i = 0; i < tree.length; i++) {
+                    var itemId = String(tree[i].item.id),
+                        itemText = tree[i].item.textContent || tree[i].item.innerText || '';
+
                     this.tempHtml.push("<li class='" + this.settings.itemClass + "'>"
-                        + "<a class='" + this.settings.linkClass + "' href='#" + tree[i].item.id + "'>"
-                        + tree[i].item.innerText + "</a>");
+                        + "<a class='" + this.settings.linkClass + "' href=\""
+                        + this.escapeHtml('#' + itemId) + "\">"
+                        + this.escapeHtml(itemText) + "</a>");
 
                     if (tree[i].children.length !== 0) {
                         this.tempHtml.push("<ul class='" + this.settings.subItemBoxClass + "'>");
@@ -189,6 +201,18 @@
 
                 return indexTree;
             },
+
+            escapeHtml: function (value) {
+                return String(value).replace(/[&<>\"']/g, function (character) {
+                    return {
+                        '&': '&amp;',
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        '\"': '&quot;',
+                        "'": '&#39;'
+                    }[character];
+                });
+            },
             search: function (start, end, findValue) {
                 if (this.headerList.length === 0) return null;
 
@@ -224,25 +248,27 @@
                 var eTop = elem.getBoundingClientRect().top
 
                 return parseInt(eTop - wrapTop - this.settings.offset)
-                // var rect, win;
-                // if (!elem) {
-                //     return;
-                // }
-                // if (!elem.getClientRects().length) {
-                //     return {top: 0, left: 0};
-                // }
-                //
-                // rect = elem.getBoundingClientRect();
-                // win = elem.ownerDocument.defaultView;
-                // return parseInt(rect.top + win.pageYOffset);
             },
             /**
              * 滑动到指定id选择器的标题
              * @param eid 标题的id值
              */
             scrollTo: function (eid) {
+                var target = eid && eid.charAt(0) === '#'
+                    ? document.getElementById(eid.substring(1))
+                    : null;
+
+                if (!target) {
+                    return;
+                }
+
+                var currentScrollTop = this.scrollWrap.scrollTop();
+                var targetTop = target.getBoundingClientRect().top
+                    + currentScrollTop
+                    - this.settings.offset;
+
                 this.scrollBody.stop().animate({
-                    scrollTop: this.offsetTop(document.querySelector(eid))
+                    scrollTop: Math.max(0, targetTop)
                 }, 'fast');
             },
             /**
@@ -258,7 +284,10 @@
                 }
 
                 var indexItem = this.indexBox
-                    .find('a[href="#' + find.id + '"]')
+                    .find('a')
+                    .filter(function () {
+                        return this.getAttribute('href') === '#' + find.id;
+                    })
                     .parent('li.' + this.settings.itemClass);
 
                 this.current(indexItem);
