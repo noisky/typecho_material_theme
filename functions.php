@@ -347,30 +347,6 @@ function materialAssetCdnOrigin() {
 }
 
 /**
- * Material 静态资源版本清单。
- *
- * 版本号属于主题代码和部署信息，不作为主题后台配置保存。
- * 资源实际变更时，只需更新这里对应资源的版本号。
- */
-function materialAssetVersionMap() {
-    static $versions = array(
-        // 第三方资源：保留现有缓存标识。
-        'css/bootstrap.min.css' => '20200413',
-        'css/material.min.css' => '2019123001',
-        'js/jquery-2.2.4.min.js' => '2026090901',
-        'js/bootstrap.min.js' => '2026090901',
-
-        // 主题维护资源：文件变更时更新对应版本号。
-        'css/customs.min.css' => '2026091218',
-        'css/customs-blue.min.css' => '2026091215',
-        'js/merge.min.js' => '2026091102',
-        'js/custom.min.js' => '2026091219'
-    );
-
-    return $versions;
-}
-
-/**
  * 获取指定静态资源的版本号。
  */
 function materialAssetVersion($path) {
@@ -426,4 +402,28 @@ function timer_stop( $display = 0, $precision = 3 ) {
     if ( $display )
     echo $r;
     return $r;
+}
+
+/**
+ * Material 静态资源版本清单。
+ *
+ * 版本号属于主题代码和部署信息，不作为主题后台配置保存。
+ * 资源实际变更时，只需更新这里对应资源的版本号。
+ */
+function materialAssetVersionMap() {
+    static $versions = array(
+        // 第三方资源：保留现有缓存标识。
+        'css/bootstrap.min.css' => '20200413',
+        'css/material.min.css' => '2019123001',
+        'js/jquery-2.2.4.min.js' => '2026090901',
+        'js/bootstrap.min.js' => '2026090901',
+
+        // 主题维护资源：文件变更时更新对应版本号。
+        'css/customs.min.css' => '2026091222',
+        'css/customs-blue.min.css' => '2026091215',
+        'js/merge.min.js' => '2026091102',
+        'js/custom.min.js' => '2026091219'
+    );
+
+    return $versions;
 }

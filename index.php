@@ -5,7 +5,7 @@
  *
  * @package Material Theme
  * @author 饭饭
- * @version 3.0.2
+ * @version 3.0.5
  * @link https://github.com/noisky/typecho_material_theme
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;

@@ -145,7 +145,11 @@ ul.nav.navbar-nav {
 
 @media (max-width: 767px) {
     .material-theme-control {
+        top: 0;
         right: 54px;
+        bottom: auto;
+        /* 与 Bootstrap 移动端 navbar-toggle 的横线中心保持一致。 */
+        height: 48px;
     }
 
     .material-theme-toggle {
@@ -161,6 +165,12 @@ ul.nav.navbar-nav {
         height: 23px;
         flex-basis: 23px;
     }
+}
+
+/* 移动端折叠导航按钮使用实心纯白横线。 */
+.navbar.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #fff;
+    border: 0;
 }
 
 .billboard {
